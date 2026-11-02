@@ -1,0 +1,2880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>The Treestand & Mountain Journal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    :root {
+      --bg-void: #120f0c;
+      --bg-panel: #1b1611;
+      --bg-card: #241e18;
+      --bg-inset: #16120d;
+      --border-subtle: #3a3026;
+      --border-brass: #c29b53;
+      --brass-gold: #d4a952;
+      --brass-warm: #bf954c;
+      --camo-tan: #c2aa82;
+      --camo-coyote: #8f7759;
+      --camo-olive: #506143;
+      --camo-forest: #394630;
+      --text-bone: #f5f1e8;
+      --text-muted: #a39683;
+      --vital-green: #68b855;
+      --danger-red: #e66565;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-bone);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    /* Authentic ASAT Camouflage Disruptive Pattern */
+    .asat-camo-theme {
+      background-color: #120f0c;
+      background-image: 
+        radial-gradient(ellipse at 15% 25%, rgba(143, 119, 89, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(80, 97, 67, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 90%, rgba(57, 70, 48, 0.20) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='220' viewBox='0 0 180 220'%3E%3Cpath d='M30 0 Q48 50 25 100 Q8 145 40 200 Q50 220 44 220 Q16 165 5 110 Q-5 55 18 0 Z' fill='%232a2117' opacity='0.45'/%3E%3Cpath d='M95 10 Q122 55 105 120 Q90 175 130 220 Q140 220 134 200 Q106 145 122 80 Q134 25 106 0 Z' fill='%2319130c' opacity='0.6'/%3E%3Cpath d='M155 20 Q172 75 160 130 Q150 185 172 220' stroke='%233b4932' stroke-width='16' fill='none' stroke-linecap='round' opacity='0.35'/%3E%3Cpath d='M55 35 Q78 80 68 135 Q55 180 78 215' stroke='%238a7150' stroke-width='11' fill='none' stroke-linecap='round' opacity='0.32'/%3E%3Cpath d='M10 150 Q32 180 22 220' stroke='%23baa27c' stroke-width='9' fill='none' stroke-linecap='round' opacity='0.28'/%3E%3Cpath d='M120 20 Q142 55 136 100' stroke='%234c5d3d' stroke-width='10' fill='none' stroke-linecap='round' opacity='0.32'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: auto, auto, auto, 260px 320px;
+    }
+
+    .font-serif-title { font-family: 'Cinzel', Georgia, serif; }
+    .font-journal { font-family: 'Newsreader', Georgia, serif; }
+    .font-mono-data { font-family: 'JetBrains Mono', Menlo, Consolas, monospace; }
+
+    .touch-btn {
+      transition: transform 0.08s ease, filter 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+    .touch-btn:active {
+      transform: scale(0.975);
+      filter: brightness(1.15);
+    }
+
+    .zen-backdrop {
+      background: rgba(18, 15, 12, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Range slider custom styling - Coyote & Brass Theme */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: #17130e;
+      border: 1px solid #3d3226;
+      border-radius: 9999px;
+      height: 8px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #cfa856;
+      border: 2px solid #1c1712;
+      box-shadow: 0 0 10px rgba(207, 168, 86, 0.45);
+      cursor: pointer;
+    }
+    input[type=range]::-moz-range-thumb {
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #cfa856;
+      border: 2px solid #1c1712;
+      cursor: pointer;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #3d3226; border-radius: 4px; }
+  </style>
+</head>
+<body class="w-screen h-[100dvh] flex flex-col asat-camo-theme text-[#f5f1e8]">
+
+  <!-- HEADER -->
+  <header class="h-14 bg-[#1b1611]/95 border-b border-[#3a3026] px-3.5 sm:px-5 flex items-center justify-between flex-shrink-0 z-30 shadow-md">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg border border-[#c29b53] bg-[#272019] flex items-center justify-center text-[#d4a952] text-sm font-serif-title font-bold shadow-sm">
+        🏹
+      </div>
+      <div>
+        <div class="font-serif-title tracking-wider text-xs sm:text-sm font-bold text-[#f5f1e8]">THE TREESTAND & MOUNTAIN JOURNAL</div>
+        <div class="text-[9px] font-mono-data text-[#a39683] tracking-wide flex items-center gap-1.5">
+          <span id="header-biome-name" class="text-[#c2aa82]">APPALACHIAN OAK RIDGE</span>
+          <span class="text-[#514335]">•</span>
+          <span id="header-time" class="text-[#d4a952]">06:42 AM • Frosted Rut</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 font-mono-data text-xs">
+      <div class="bg-[#241e18] border border-[#3d3226] px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-sm text-[11px]">
+        <span class="text-[#c29b53] font-bold">FUNDS:</span>
+        <span id="header-funds-display" class="text-[#7d9c66] font-bold">$650</span>
+      </div>
+      <div class="bg-[#241e18] border border-[#3d3226] px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-sm text-[11px]">
+        <span class="text-[#c29b53] font-bold">TAGS:</span>
+        <span id="header-tags-display" class="text-[#f5f1e8] font-bold">3 Active</span>
+      </div>
+      <button id="btn-toggle-god" class="touch-btn text-[10px] px-2.5 py-1 rounded bg-[#2b2216] border border-[#c29b53] text-[#d4a952] font-bold tracking-wider hover:bg-[#382b1c]">
+        ⚡ GOD MODE
+      </button>
+    </div>
+  </header>
+
+  <!-- TELEMETRY & GEAR TICKER -->
+  <div class="h-8 bg-[#17130e]/95 border-b border-[#2d251d] px-3 sm:px-5 flex items-center justify-between text-[11px] font-mono-data text-[#a39683] flex-shrink-0">
+    <div class="flex items-center gap-2 truncate">
+      <span class="text-[#c29b53] font-bold flex items-center gap-1 flex-shrink-0">
+        <span>📍</span>
+        <span id="ticker-location-name" class="text-[#c2aa82]">20ft White Oak Stand</span>
+      </span>
+      <span class="text-[#44382c]">|</span>
+      <span id="ticker-wind-condition" class="truncate text-[10px] text-[#938573]">Wind: NW 4 mph (Blowing down-ridge • Scent Secure)</span>
+    </div>
+    <div class="flex items-center gap-2 flex-shrink-0 text-[10px]">
+      <span class="text-[#c29b53]">RIG: <b id="ticker-equipped-bow" class="text-[#f5f1e8] font-bold">60# Recurve</b></span>
+      <span class="text-[#44382c]">•</span>
+      <span>FREEZER: <b id="ticker-freezer-lbs" class="text-[#c2aa82] font-bold">0</b> lbs</span>
+      <button id="btn-sell-freezer" class="touch-btn text-[9px] px-1.5 py-0.5 rounded bg-[#2a2116] border border-[#c29b53] text-[#d4a952] font-bold hover:bg-[#382b1c]">
+        Sell Venison
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="flex-1 relative overflow-hidden bg-transparent">
+
+    <!-- TAB 1: THE STAND / SIT VIEW -->
+    <div id="tab-hunt" class="absolute inset-0 flex flex-col p-3 sm:p-4 overflow-y-auto pb-20 space-y-3">
+      <div class="max-w-xl mx-auto w-full flex-1 flex flex-col justify-between space-y-3">
+
+        <!-- Stand Environment Card -->
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] rounded-2xl p-4 shadow-md flex items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="text-[9px] font-mono-data text-[#c29b53] uppercase tracking-widest flex items-center gap-1.5">
+              <span id="stand-region-sub" class="text-[#7d9c66]">BIG GAME WILDLIFE CORRIDOR</span>
+              <span class="text-[#514335]">•</span>
+              <span id="stand-slant-info" class="text-[#d4a952]">Slant Range: 20.0 yds</span>
+            </div>
+            <h2 id="stand-biome-title" class="font-serif-title font-bold text-sm sm:text-base text-[#f5f1e8]">White Oak Acorn Ridge</h2>
+            <p id="stand-biome-prose" class="text-xs font-journal italic text-[#a39683] leading-relaxed">
+              Crisp autumn air carries the faint scent of fallen leaves and crushed acorns. Distant timber grunts and bugles echo across the mist-shrouded hollow.
+            </p>
+          </div>
+          <button id="btn-glass-stand" class="touch-btn px-3 py-2 bg-[#272019] hover:bg-[#332a21] border border-[#483d31] text-[#f5f1e8] rounded-xl text-xs font-mono-data font-bold flex items-center gap-1.5 flex-shrink-0 shadow-sm">
+            <span>🍁</span>
+            <span>Glass Terrain</span>
+          </button>
+        </div>
+
+        <!-- Central Narrative Observation Display -->
+        <div class="flex-1 bg-[#17130e]/95 border border-[#332a20] rounded-2xl p-4 flex flex-col justify-between font-journal shadow-inner min-h-[350px]">
+          <div id="hunt-scroll-view" class="flex-1 overflow-y-auto space-y-3 pr-1 text-sm leading-relaxed text-[#ded8cb]">
+            <div class="text-[11px] font-mono-data text-[#938573] border-b border-[#2d251d] pb-1.5 flex items-center justify-between">
+              <span class="tracking-wide text-[#7d9c66]">WOODLAND TELEMETRY</span>
+              <span id="hunt-clock-label" class="text-[#c29b53]">06:48 AM • CALM COLD AIR</span>
+            </div>
+
+            <!-- Narrative Text -->
+            <p id="hunt-narrative-primary" class="text-base sm:text-lg italic text-[#f0ebe0] leading-relaxed">
+              Quiet stillness blankets the timber. Frost clings to the bark of the old white oak. Down along the contour of the laurel thicket, hooves snap a brittle twig—a heavy silhouette is working the scrape line.
+            </p>
+
+            <!-- Active Encounter Card -->
+            <div id="encounter-card" class="hidden p-3.5 rounded-xl bg-[#241e17] border border-[#43372b] text-sm text-[#f5f1e8] space-y-2">
+              <div class="flex items-center justify-between font-mono-data text-[10px] text-[#c29b53] uppercase tracking-wider">
+                <span class="flex items-center gap-1 font-bold text-[#8eb876]">
+                  <span>🎯</span>
+                  <span id="encounter-status-tag">BIG GAME IN RANGE: 20 YARDS</span>
+                </span>
+                <span id="encounter-fur-tag" class="px-2 py-0.5 rounded bg-[#2e261e] text-[#f5f1e8] border border-[#483d31]">Classic Coat</span>
+              </div>
+              <div class="font-serif-title font-bold text-sm text-[#f5f1e8] flex items-center justify-between">
+                <span id="encounter-name">Mature 10-Point Monarch</span>
+                <span id="encounter-score-est" class="text-xs text-[#d4a952] font-mono-data font-normal">Est. 154" B&C</span>
+              </div>
+              <p id="encounter-behavior" class="text-xs font-journal italic text-[#d4cbba] leading-relaxed">
+                Cruising past your stand at 20 yards broadside. Scent checking the wind, unaware of your presence above.
+              </p>
+
+              <!-- Antler Points Breakdown Callout -->
+              <div id="enc-antler-summary-box" class="p-2 rounded-lg bg-[#1a1510] border border-[#382e24] font-mono-data text-[11px] space-y-1">
+                <div class="flex items-center justify-between text-[#f5f1e8] font-bold">
+                  <span id="enc-antler-point-str">Total Points: 10 (5 on Right, 5 on Left)</span>
+                  <button id="btn-view-enc-sheet" class="touch-btn text-[9px] px-2 py-0.5 rounded bg-[#332718] border border-[#c29b53] text-[#d4a952] font-bold">
+                    📋 View B&C Sheet
+                  </button>
+                </div>
+                <div id="enc-antler-stats-line" class="text-[#a39683] text-[10px]">
+                  Inside Spread: 19 4/8" • Gross: 161 2/8" • Net: 154 6/8"
+                </div>
+              </div>
+
+              <!-- Angle & Geometry Callout -->
+              <div class="bg-[#18130e] p-2.5 rounded-lg border border-[#332a20] font-mono-data text-[11px] grid grid-cols-2 gap-2 text-[#a39683]">
+                <div>Slant Range: <b id="enc-slant-range" class="text-[#f5f1e8]">20.0 yds</b></div>
+                <div>True Gravitational: <b id="enc-horiz-range" class="text-[#c2aa82]">18.8 yds</b></div>
+                <div>Orientation: <b id="enc-orientation" class="text-[#f5f1e8]">Broadside Left</b></div>
+                <div>Alert Level: <b id="enc-alert-level" class="text-[#7d9c66]">Relaxed Feeding</b></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE SHOT ALIGNMENT INTERFACE (SLIDERS & REAL-TIME BALLISTIC HUD) -->
+          <div id="action-aim-dock" class="hidden pt-3 border-t border-[#2d251d] space-y-3 font-mono-data text-xs">
+            
+            <!-- Real-Time Ballistic Evaluation HUD -->
+            <div id="hud-trajectory-box" class="p-2.5 rounded-xl bg-[#221c15] border border-[#44382c] space-y-1.5">
+              <div class="flex items-center justify-between text-[10px] uppercase font-bold tracking-wider">
+                <span class="text-[#c29b53]">FLIGHT TELEMETRY HUD</span>
+                <span id="hud-hit-prediction" class="text-[#7d9c66]">VITAL TRIANGLE: DOUBLE LUNG</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1.5 text-[10px] text-[#a39683]">
+                <div>Form: <b id="hud-form-status" class="text-[#f5f1e8]">Waist Bent 22°</b></div>
+                <div>Elevation Drop: <b id="hud-drop-status" class="text-[#c2aa82]">-1.2 in (Grav Corrected)</b></div>
+                <div>String Reaction: <b id="hud-string-status" class="text-[#f5f1e8]">Compensated</b></div>
+              </div>
+            </div>
+
+            <!-- SLIDER 1: WAIST BEND & ELEVATION FORM -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[11px]">
+                <span class="text-[#f5f1e8] font-bold flex items-center gap-1">
+                  <span>📐</span>
+                  <span>1. Torso Waist-Bend Form:</span>
+                </span>
+                <span id="val-slider-waist" class="text-[#c2aa82] font-bold">22° (Locked T-Form)</span>
+              </div>
+              <input type="range" id="slider-waist" min="0" max="45" value="22" step="1">
+              <div class="flex justify-between text-[8px] text-[#7d705e]">
+                <span>0° (Dropped Arm - Shoots High Over Spine)</span>
+                <span>22° (True Form)</span>
+                <span>45° (Over-bent)</span>
+              </div>
+            </div>
+
+            <!-- SLIDER 2: STRING-JUMP & WINDAGE OFFSET -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[11px]">
+                <span class="text-[#f5f1e8] font-bold flex items-center gap-1">
+                  <span>💨</span>
+                  <span>2. String-Jump & Windage Offset:</span>
+                </span>
+                <span id="val-slider-windage" class="text-[#c2aa82] font-bold">-4 in (Aim Low 1/3 Crease)</span>
+              </div>
+              <input type="range" id="slider-windage" min="-12" max="12" value="-4" step="1">
+              <div class="flex justify-between text-[8px] text-[#7d705e]">
+                <span>-12 in (Heart / Low Crease)</span>
+                <span>0 in (Dead Center Vitals)</span>
+                <span>+12 in (High Shoulder / Spine)</span>
+              </div>
+            </div>
+
+            <!-- SLIDER 3: PIN HOLD / GAP-SHOOTING CALIBRATION -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[11px]">
+                <span class="text-[#f5f1e8] font-bold flex items-center gap-1">
+                  <span>🎯</span>
+                  <span>3. Pin Calibration / Yardage Hold:</span>
+                </span>
+                <span id="val-slider-yardage" class="text-[#c2aa82] font-bold">19 yds (Horizontal Distance)</span>
+              </div>
+              <input type="range" id="slider-yardage" min="15" max="30" value="19" step="1">
+              <div class="flex justify-between text-[8px] text-[#7d705e]">
+                <span>15 yds</span>
+                <span>19 yds (True Gravitational)</span>
+                <span>20 yds (Slant Range)</span>
+                <span>30 yds</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons: Release vs Pass -->
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <button id="btn-pass-animal" class="touch-btn py-3 px-2 bg-[#201a14] hover:bg-[#2c241c] border border-[#3d3226] text-[#a39683] font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5">
+                <span>🍃</span>
+                <span>Pass & Let Walk</span>
+              </button>
+              <button id="btn-release-string" class="touch-btn py-3 px-2 bg-gradient-to-r from-[#ba9148] to-[#d4a952] text-[#120f0c] font-serif-title font-extrabold uppercase tracking-widest rounded-xl shadow-lg flex items-center justify-center gap-1.5">
+                <span>🏹</span>
+                <span id="btn-release-text">RELEASE 60# STRING</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Stand Idle Action (Wait & Listen) -->
+          <div id="action-idle-dock" class="pt-3 border-t border-[#2d251d] flex flex-col gap-2">
+            <button id="btn-wait-vigil" class="touch-btn w-full py-4 px-4 bg-gradient-to-r from-[#b58b43] via-[#cfa856] to-[#b58b43] hover:brightness-110 text-[#120f0c] font-serif-title font-bold tracking-wider text-xs sm:text-sm rounded-xl shadow-lg flex items-center justify-center gap-2">
+              <span>❖</span>
+              <span>HOLD SILENT VIGIL ON STAND (PASS TIME)</span>
+              <span>❖</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Rig Information Pill -->
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] rounded-xl px-3.5 py-2.5 flex items-center justify-between text-xs font-mono-data text-[#a39683]">
+          <div class="flex items-center gap-2 truncate">
+            <span>PLATFORM:</span>
+            <span id="hunt-equipped-platform-label" class="text-[#f5f1e8] font-bold truncate">60# Custom Osage Recurve</span>
+          </div>
+          <div class="text-[#c29b53] flex items-center gap-1 flex-shrink-0">
+            <span>SIGHT:</span>
+            <span id="hunt-equipped-sight-label" class="font-bold text-[#c2aa82]">Instinctive / Gap</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: ARSENAL & WEAPONS PLATFORMS -->
+    <div id="tab-bows" class="absolute inset-0 p-3 sm:p-5 overflow-y-auto pb-24 space-y-4 hidden font-mono-data">
+      <div class="max-w-xl mx-auto space-y-4">
+        
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] p-4 rounded-2xl flex items-center justify-between shadow-md">
+          <div>
+            <div class="text-[9px] text-[#7d9c66] uppercase tracking-widest font-bold">TRADITIONAL & COMPOUND ARCHERY</div>
+            <h2 class="font-serif-title font-bold text-base text-[#f5f1e8]">Archery Platforms & Ballistics</h2>
+            <p class="text-xs font-journal italic text-[#a39683] mt-0.5">
+              Select your traditional wood-core heirloom or modern long-axle high-velocity compound.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section: Traditional Bows -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between border-b border-[#3a3026] pb-1">
+            <span class="text-xs font-serif-title font-bold text-[#c29b53] tracking-wider flex items-center gap-1.5">
+              <span>🏹</span>
+              <span>TRADITIONAL & HEIRLOOM INSTINCTIVE BOWS</span>
+            </span>
+            <span class="text-[9px] text-[#a39683]">Heavy Bone Kinetic Penetration</span>
+          </div>
+          <div id="bow-list-traditional" class="space-y-3">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Section: Modern Compounds -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center justify-between border-b border-[#3a3026] pb-1">
+            <span class="text-xs font-serif-title font-bold text-[#7d9c66] tracking-wider flex items-center gap-1.5">
+              <span>⚙️</span>
+              <span>MODERN & LONG AXLE-TO-AXLE (ATA) COMPOUNDS</span>
+            </span>
+            <span class="text-[9px] text-[#a39683]">33"-35" Stability & Forgiveness</span>
+          </div>
+          <div id="bow-list-compound" class="space-y-3">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Treestand Ballistics Guide -->
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] p-4 rounded-2xl space-y-2 text-xs">
+          <div class="font-serif-title font-bold text-[#f5f1e8] text-xs uppercase tracking-wider flex items-center gap-1.5">
+            <span>📐</span>
+            <span>Elevation Physics: 20ft Stand at 20 Yards</span>
+          </div>
+          <p class="font-journal italic text-[#a39683] leading-relaxed">
+            When perched 20 feet up (6.7 yards vertical elevation), a laser rangefinder reads a <b>20.0-yard slant distance</b>. Gravity, however, only exerts downward acceleration over the <b>18.8-yard horizontal distance</b>. If you fail to bend at the waist and merely drop your bow arm, your anchor shifts up and your arrow impacts 4 to 8 inches high, flying cleanly over the spine.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 3: THE BOWYER'S BENCH & SKILL UPGRADES (REPLACES TRACKING) -->
+    <div id="tab-bowyer" class="absolute inset-0 p-3 sm:p-5 overflow-y-auto pb-24 space-y-4 hidden font-mono-data">
+      <div class="max-w-xl mx-auto space-y-4">
+        
+        <!-- Header Card -->
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] p-4 rounded-2xl flex items-center justify-between shadow-md">
+          <div>
+            <div class="text-[9px] text-[#7d9c66] uppercase tracking-widest font-bold">THE TRADITIONAL CRAFT & WOODLORE</div>
+            <h2 class="font-serif-title font-bold text-base text-[#f5f1e8]">The Bowyer's Bench & Skills</h2>
+            <p class="text-xs font-journal italic text-[#a39683] mt-0.5">
+              Handcraft custom recurves and longbows to hunt with or sell, and invest profits into woodsman mastery.
+            </p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-[9px] text-[#a39683] uppercase">Treasury</div>
+            <div id="bowyer-treasury-label" class="font-bold text-sm text-[#7d9c66]">$650</div>
+          </div>
+        </div>
+
+        <!-- Section 1: Custom Bow Builder -->
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] rounded-2xl p-4 space-y-3.5 shadow-md">
+          <div class="flex items-center justify-between border-b border-[#2d251d] pb-2">
+            <span class="font-serif-title font-bold text-xs sm:text-sm text-[#c29b53] tracking-wide flex items-center gap-1.5">
+              <span>🪵</span>
+              <span>CUSTOM TRADITIONAL BOW COMMISSION BENCH</span>
+            </span>
+            <span class="text-[10px] text-[#7d9c66] font-bold" id="craft-est-profit">Est. Value: $850</span>
+          </div>
+
+          <!-- Selection Controls -->
+          <div class="space-y-2.5 text-xs">
+            <!-- 1. Bow Architecture -->
+            <div>
+              <label class="text-[10px] text-[#a39683] uppercase tracking-wider block mb-1">1. Bow Architecture & Design</label>
+              <select id="craft-sel-arch" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2.5 text-[#f5f1e8] outline-none text-xs">
+                <option value="recurve_oneway" data-cost="160" data-base="184">Classic One-Piece Recurve (60" AMO • Smooth Draw)</option>
+                <option value="reflex_longbow" data-cost="180" data-base="180">Reflex-Deflex Hybrid Longbow (64" AMO • Whisper Quiet)</option>
+                <option value="vintage_50s" data-cost="210" data-base="192">1950s Style Static Recurve (58" AMO • Fast Snap)</option>
+                <option value="heavy_warbow" data-cost="260" data-base="176">Heavy Timber War-Longbow (68" AMO • Scapula Smasher)</option>
+              </select>
+            </div>
+
+            <!-- 2. Riser Exotic Hardwood -->
+            <div>
+              <label class="text-[10px] text-[#a39683] uppercase tracking-wider block mb-1">2. Riser Hardwood Laminations</label>
+              <select id="craft-sel-wood" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2.5 text-[#f5f1e8] outline-none text-xs">
+                <option value="osage" data-cost="60" data-bonus="10">Aged Osage Orange & Bocote (Tough & Resonant)</option>
+                <option value="ebony" data-cost="120" data-bonus="25">Macassar Ebony & Curly Bubinga (Dense & Stable)</option>
+                <option value="cocobolo" data-cost="140" data-bonus="35">Cocobolo & Shedua Accent (Heavy & Vibration-Free)</option>
+                <option value="phenolic" data-cost="90" data-bonus="18">Micarta Phenolic & Actionwood (Indestructible)</option>
+              </select>
+            </div>
+
+            <!-- 3. Limb Core & Glass -->
+            <div>
+              <label class="text-[10px] text-[#a39683] uppercase tracking-wider block mb-1">3. Limb Core Material</label>
+              <select id="craft-sel-core" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2.5 text-[#f5f1e8] outline-none text-xs">
+                <option value="bamboo" data-cost="70" data-fps="0">Tri-Lam Moso Bamboo & Clear Glass (Light & Snappy)</option>
+                <option value="carbon_foam" data-cost="150" data-fps="12">Cross-Weave Carbon & Foam Core (+12 fps Flat Flight)</option>
+                <option value="yew_action" data-cost="95" data-fps="4">Pacific Yew & Actionwood (Classic Traditional Cast)</option>
+              </select>
+            </div>
+
+            <!-- 4. Draw Weight & Tuning -->
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] text-[#a39683] uppercase tracking-wider block mb-1">4. Draw Weight (@ 28")</label>
+                <select id="craft-sel-weight" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2 text-[#f5f1e8] outline-none text-xs">
+                  <option value="50">50# (Easy Practice & Doe)</option>
+                  <option value="55">55# (All-Round Whitetail)</option>
+                  <option value="60" selected>60# (Standard Heavy Elk/Buck)</option>
+                  <option value="65">65# (Deep Bone Penetration)</option>
+                  <option value="75">75# (Heavy Big-Game Beast)</option>
+                  <option value="85">85# (Monster Heavy War-Rig)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10px] text-[#a39683] uppercase tracking-wider block mb-1">5. String Silencer</label>
+                <select id="craft-sel-string" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2 text-[#f5f1e8] outline-none text-xs">
+                  <option value="beaver" data-cost="20">Beaver Fur Balls (Whisper)</option>
+                  <option value="catwhiskers" data-cost="15">Rubber Catwhiskers (Rainproof)</option>
+                  <option value="otter" data-cost="30">Otter Tail Strips (Silent)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crafting Summary Box -->
+          <div class="bg-[#17130e] p-3 rounded-xl border border-[#332a20] flex items-center justify-between text-xs font-mono-data">
+            <div>
+              <div class="text-[9px] text-[#a39683]">Crafting Material Cost:</div>
+              <div id="craft-cost-display" class="text-sm font-bold text-[#e66565] mt-0.5">$310</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[9px] text-[#a39683]">Estimated Retail Payout:</div>
+              <div id="craft-payout-display" class="text-sm font-bold text-[#7d9c66] mt-0.5">$880 (+$570)</div>
+            </div>
+          </div>
+
+          <button id="btn-craft-bow" class="touch-btn w-full py-3 px-4 bg-gradient-to-r from-[#ba9148] to-[#d4a952] text-[#120f0c] font-serif-title font-extrabold uppercase tracking-widest rounded-xl shadow-lg flex items-center justify-center gap-2 text-xs sm:text-sm">
+            <span>🪓</span>
+            <span>HANDCRAFT CUSTOM BOW</span>
+          </button>
+        </div>
+
+        <!-- Section 2: Woodsman & Archery Skill Upgrades -->
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] rounded-2xl p-4 space-y-3 shadow-md">
+          <div class="border-b border-[#2d251d] pb-2">
+            <span class="font-serif-title font-bold text-xs sm:text-sm text-[#7d9c66] tracking-wide flex items-center gap-1.5">
+              <span>🌲</span>
+              <span>WOODSMAN & ARCHERY SKILL MASTERY</span>
+            </span>
+            <div class="text-[10px] text-[#a39683] mt-0.5">Invest bowcraft and harvest earnings into permanent woodlore traits</div>
+          </div>
+
+          <div id="skill-tree-container" class="space-y-2.5 text-xs">
+            <!-- Dynamically populated skills -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 4: HARVEST LEDGER & TROPHY SHARING LODGE -->
+    <div id="tab-lodge" class="absolute inset-0 p-3 sm:p-5 overflow-y-auto pb-24 space-y-4 hidden font-mono-data">
+      <div class="max-w-xl mx-auto space-y-3">
+        <div class="flex items-center justify-between border-b border-[#3a3026] pb-2.5">
+          <div>
+            <h2 class="font-serif-title font-bold text-sm sm:text-base text-[#f5f1e8] tracking-wide">BIG GAME HARVEST LEDGER</h2>
+            <div class="text-[10px] text-[#a39683]">Certified trophies, rare genetics, and trophy code sharing</div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button id="btn-import-code-trigger" class="touch-btn px-2.5 py-1 bg-[#272019] border border-[#483d31] text-[#c29b53] rounded-lg text-xs font-bold">
+              + Import Code
+            </button>
+            <div class="text-xs text-[#c29b53] font-bold">
+              <span id="lodge-count-display">0</span> HARVESTS
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px]">
+          <button class="lodge-filter-btn px-2.5 py-1 bg-[#3a3024] text-[#f5f1e8] rounded-lg border border-[#524434] font-bold flex-shrink-0" data-filter="all">ALL</button>
+          <button class="lodge-filter-btn px-2.5 py-1 bg-[#1b1611] text-[#a39683] hover:text-[#f5f1e8] rounded-lg border border-[#3a3026] flex-shrink-0" data-filter="whitetail">WHITETAIL</button>
+          <button class="lodge-filter-btn px-2.5 py-1 bg-[#1b1611] text-[#a39683] hover:text-[#f5f1e8] rounded-lg border border-[#3a3026] flex-shrink-0" data-filter="elk">ELK</button>
+          <button class="lodge-filter-btn px-2.5 py-1 bg-[#1b1611] text-[#a39683] hover:text-[#f5f1e8] rounded-lg border border-[#3a3026] flex-shrink-0" data-filter="stag">RED STAG</button>
+          <button class="lodge-filter-btn px-2.5 py-1 bg-[#1b1611] text-[#a39683] hover:text-[#f5f1e8] rounded-lg border border-[#3a3026] flex-shrink-0" data-filter="rare">RARE MORPHS</button>
+        </div>
+
+        <!-- Harvest Entries List -->
+        <div id="lodge-list-container" class="space-y-2 text-xs">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: WHITETAIL, ELK & RED STAG BIOLOGY & GENETICS -->
+    <div id="tab-manual" class="absolute inset-0 p-3 sm:p-5 overflow-y-auto pb-24 space-y-4 hidden font-mono-data">
+      <div class="max-w-xl mx-auto space-y-3">
+        
+        <div class="bg-[#1b1611]/95 border border-[#3a3026] p-4 rounded-2xl space-y-1 shadow-md">
+          <div class="text-[9px] text-[#7d9c66] uppercase tracking-widest font-bold">FIELD NATURALIST COMPENDIUM</div>
+          <h2 class="font-serif-title font-bold text-base text-[#f5f1e8]">Big Game Species & Rare Genetics</h2>
+          <p class="text-xs font-journal italic text-[#a39683]">
+            Anatomical profiles, antler metrics, and rare coat mutations documented across world ranges.
+          </p>
+        </div>
+
+        <!-- Whitetail Genetics -->
+        <div class="p-3.5 rounded-xl bg-[#1b1611] border border-[#3a3026] space-y-2 text-xs">
+          <div class="flex items-center justify-between font-bold text-[#f5f1e8] border-b border-[#2d251d] pb-1.5">
+            <span class="flex items-center gap-1.5 font-serif-title">
+              <span>🦌</span>
+              <span>Whitetail Deer (Odocoileus virginianus)</span>
+            </span>
+            <span class="text-[#c29b53] font-mono-data text-[10px]">Pope & Young / Boone & Crockett</span>
+          </div>
+          <p class="font-journal italic text-[#a39683] leading-relaxed">
+            The ghost of North American hardwoods. Possesses extraordinary hearing and knee-loading string-jump reaction speed (dropping 8–12 inches upon the acoustic snap of a bowstring). Rare coat morphs include:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono-data pt-1">
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Piebald (~1 in 1,000):</b> Calico white patches, dorsal curve.
+            </div>
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Melanistic (~1 in 500k):</b> Solid coal-black velvet coat.
+            </div>
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Leucistic:</b> Ghost white coat with normal brown eyes.
+            </div>
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Pure Albino (~1 in 30k):</b> Pure white with pink nose/eyes.
+            </div>
+          </div>
+        </div>
+
+        <!-- Rocky Mountain Elk Genetics -->
+        <div class="p-3.5 rounded-xl bg-[#1b1611] border border-[#3a3026] space-y-2 text-xs">
+          <div class="flex items-center justify-between font-bold text-[#f5f1e8] border-b border-[#2d251d] pb-1.5">
+            <span class="flex items-center gap-1.5 font-serif-title">
+              <span>🏔️</span>
+              <span>Rocky Mountain Elk (Cervus canadensis nelsoni)</span>
+            </span>
+            <span class="text-[#c29b53] font-mono-data text-[10px]">375"+ B&C Monarchs</span>
+          </div>
+          <p class="font-journal italic text-[#a39683] leading-relaxed">
+            Monarch of the sub-alpine basins and aspen benches. Mature bulls weigh 700 to 900+ lbs with massive 6x6 and 7x7 antler crowns. Resonant bugles echo for miles during the autumn rut.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono-data pt-1">
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Silver Frost Bull:</b> Pale silver mantle with dark mane.
+            </div>
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Golden Ochre:</b> Rich honey-gold coat in sub-alpine basins.
+            </div>
+          </div>
+        </div>
+
+        <!-- European & Highland Red Stag Genetics -->
+        <div class="p-3.5 rounded-xl bg-[#1b1611] border border-[#3a3026] space-y-2 text-xs">
+          <div class="flex items-center justify-between font-bold text-[#f5f1e8] border-b border-[#2d251d] pb-1.5">
+            <span class="flex items-center gap-1.5 font-serif-title">
+              <span>👑</span>
+              <span>Highland Red Stag (Cervus elaphus scoticus)</span>
+            </span>
+            <span class="text-[#c29b53] font-mono-data text-[10px]">CIC International Points</span>
+          </div>
+          <p class="font-journal italic text-[#a39683] leading-relaxed">
+            The ancient sovereign of Scottish heather moors and European royal forests. Known for distinctive multipronged crown antlers and guttural rut roars.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono-data pt-1">
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">The Legendary White Hart:</b> Mythical snowy white stag revered in Celtic folklore.
+            </div>
+            <div class="p-2 bg-[#17130e] rounded-lg border border-[#332a20]">
+              <b class="text-[#d4a952]">Obsidian Midnight:</b> Rare high-melanin Scottish morph.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BOTTOM NAVIGATION (5 TABS) -->
+  <nav class="h-14 bg-[#1b1611]/95 border-t border-[#3a3026] grid grid-cols-5 z-30 flex-shrink-0 shadow-lg">
+    <button class="nav-tab active touch-btn flex flex-col items-center justify-center gap-0.5 text-[#d4a952] font-bold" data-target="hunt">
+      <span class="text-base font-serif-title">❖</span>
+      <span class="text-[9px] font-mono-data uppercase tracking-wider">The Stand</span>
+    </button>
+    <button class="nav-tab touch-btn flex flex-col items-center justify-center gap-0.5 text-[#a39683] hover:text-[#f5f1e8]" data-target="bows">
+      <span class="text-base">🏹</span>
+      <span class="text-[9px] font-mono-data uppercase tracking-wider">Arsenal</span>
+    </button>
+    <button class="nav-tab touch-btn flex flex-col items-center justify-center gap-0.5 text-[#a39683] hover:text-[#f5f1e8]" data-target="bowyer">
+      <span class="text-base">🪵</span>
+      <span class="text-[9px] font-mono-data uppercase tracking-wider">Bowyer</span>
+    </button>
+    <button class="nav-tab touch-btn flex flex-col items-center justify-center gap-0.5 text-[#a39683] hover:text-[#f5f1e8]" data-target="lodge">
+      <span class="text-base">📖</span>
+      <span class="text-[9px] font-mono-data uppercase tracking-wider">Ledger</span>
+    </button>
+    <button class="nav-tab touch-btn flex flex-col items-center justify-center gap-0.5 text-[#a39683] hover:text-[#f5f1e8]" data-target="manual">
+      <span class="text-base">🦌</span>
+      <span class="text-[9px] font-mono-data uppercase tracking-wider">Genetics</span>
+    </button>
+  </nav>
+
+  <!-- HARVEST DOSSIER & TROPHY SHARING MODAL -->
+  <div id="modal-dossier" class="fixed inset-0 zen-backdrop flex items-center justify-center p-3 sm:p-5 z-50 hidden">
+    <div class="bg-[#1b1611] border-2 border-[#c29b53] rounded-2xl max-w-lg w-full max-h-[92vh] flex flex-col shadow-[0_0_55px_rgba(194,155,83,0.25)] overflow-hidden font-mono-data">
+      
+      <!-- Dossier Header -->
+      <div class="p-3.5 bg-[#241e17] border-b border-[#3a3026] flex items-center justify-between flex-shrink-0">
+        <div>
+          <div class="text-[9px] text-[#c29b53] uppercase tracking-widest flex items-center gap-1.5">
+            <span>CERTIFIED BIG GAME HARVEST DOSSIER</span>
+            <span class="text-[#514335]">•</span>
+            <span id="dos-date" class="text-[#a39683]">Nov 4, 07:15 AM</span>
+          </div>
+          <h3 id="dos-title" class="font-serif-title text-base sm:text-lg font-bold text-[#f5f1e8] tracking-wide">10-Point Monarch Buck</h3>
+          <div id="dos-subtitle" class="font-journal italic text-xs text-[#baa995]">Odocoileus virginianus • White Oak Ridge</div>
+        </div>
+        <button id="btn-close-dossier" class="touch-btn text-[#a39683] hover:text-[#f5f1e8] p-1 text-lg">✕</button>
+      </div>
+
+      <!-- Dossier Body -->
+      <div class="p-4 overflow-y-auto space-y-3 flex-1 font-journal">
+        
+        <!-- Badges Container -->
+        <div id="dos-badges" class="flex flex-wrap gap-1.5 font-mono-data text-[10px]">
+          <div class="px-2.5 py-1 rounded bg-[#2e261e] border border-[#483d31] text-[#f5f1e8] font-bold">POPE & YOUNG QUALIFIER</div>
+        </div>
+
+        <!-- Telemetry Data Card -->
+        <div class="bg-[#17130e] border border-[#3a3026] rounded-xl p-3.5 font-mono-data space-y-2.5">
+          <div class="flex items-center justify-between border-b border-[#2d251d] pb-1.5 text-xs">
+            <span class="text-[#a39683] uppercase text-[10px]">BIOMETRIC & IMPACT RECORD</span>
+            <span id="dos-coat-badge" class="text-[#f5f1e8] font-bold">Classic Autumn Slate</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+            <div class="bg-[#241e17] p-2 rounded-lg border border-[#3b3024]">
+              <div class="text-[9px] text-[#a39683] uppercase">Weight</div>
+              <div id="dos-weight" class="text-[#f5f1e8] font-bold text-sm mt-0.5">224 lbs</div>
+            </div>
+            <div class="bg-[#241e17] p-2 rounded-lg border border-[#3b3024]">
+              <div class="text-[9px] text-[#a39683] uppercase">Net Score</div>
+              <div id="dos-score" class="text-[#d4a952] font-bold text-sm mt-0.5">158 3/8"</div>
+            </div>
+            <div class="bg-[#241e17] p-2 rounded-lg border border-[#3b3024]">
+              <div class="text-[9px] text-[#a39683] uppercase">Total Points</div>
+              <div id="dos-points-count" class="text-[#f5f1e8] font-bold text-sm mt-0.5">10 pts</div>
+            </div>
+            <div class="bg-[#241e17] p-2 rounded-lg border border-[#3b3024]">
+              <div class="text-[9px] text-[#a39683] uppercase">Meat Value</div>
+              <div id="dos-meat-val" class="text-[#7d9c66] font-bold text-sm mt-0.5">+$912</div>
+            </div>
+          </div>
+
+          <!-- Official Antler Summary Pill & Button -->
+          <div class="p-2.5 bg-[#1b1611] border border-[#3a3026] rounded-lg flex items-center justify-between text-[11px]">
+            <div class="space-y-0.5 truncate pr-2">
+              <div id="dos-rack-points-detail" class="text-[#f5f1e8] font-bold truncate">17 Total Points (11 Right, 6 Left)</div>
+              <div id="dos-rack-score-detail" class="text-[10px] text-[#c29b53] truncate">Gross: 194 6/8" • Spread: 20 2/8" • Deductions: 5 4/8"</div>
+            </div>
+            <button id="btn-view-dos-sheet" class="touch-btn text-[10px] px-2.5 py-1.5 rounded-lg bg-[#332718] border border-[#c29b53] text-[#d4a952] font-bold flex-shrink-0">
+              📋 Official Score Sheet
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-[11px] pt-1 text-[#a39683] border-t border-[#2d251d]">
+            <div>Weapon: <b id="dos-bow-used" class="text-[#f5f1e8] font-normal">60# Recurve</b></div>
+            <div>Waist Bend: <b id="dos-form-used" class="text-[#f5f1e8] font-normal">22° Form Locked</b></div>
+            <div>Placement: <b id="dos-placement-used" class="text-[#f5f1e8] font-normal">Double Lung / Heart</b></div>
+            <div>Harvest Meat: <b id="dos-meat-yield" class="text-[#f5f1e8] font-normal">76 lbs boneless</b></div>
+          </div>
+        </div>
+
+        <!-- Field Naturalist Notes -->
+        <div class="bg-[#241e17] border border-[#3a3026] rounded-xl p-3.5 space-y-1 text-xs">
+          <div class="font-serif-title font-bold text-[#d4a952] text-[10px] uppercase tracking-wider flex items-center gap-1.5">
+            <span>🖋️</span>
+            <span>Field Naturalist Entry</span>
+          </div>
+          <p id="dos-field-lore" class="leading-relaxed text-[#ded8cb] italic">
+            Taken cleanly from the 20ft White Oak treestand. The hunter drew smoothly, held anchor, bent at the waist to maintain geometry, and released with precision.
+          </p>
+        </div>
+
+        <!-- TROPHY SHARING ACTIONS SECTION -->
+        <div class="bg-[#17130e] border border-[#3a3026] rounded-xl p-3.5 font-mono-data space-y-2">
+          <div class="text-[10px] text-[#c29b53] uppercase tracking-wider font-bold flex items-center justify-between">
+            <span>TROPHY SHARING & CERTIFICATE EXPORT</span>
+            <span id="share-copy-status" class="text-[#7d9c66] hidden">Copied to Clipboard!</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-[11px]">
+            <button id="btn-export-share-code" class="touch-btn p-2 bg-[#272019] hover:bg-[#342b22] border border-[#483d31] text-[#f5f1e8] rounded-lg text-center font-bold">
+              📋 Share Code
+            </button>
+            <button id="btn-export-text-notes" class="touch-btn p-2 bg-[#272019] hover:bg-[#342b22] border border-[#483d31] text-[#f5f1e8] rounded-lg text-center font-bold">
+              📝 Text Notes
+            </button>
+            <button id="btn-export-image-card" class="touch-btn p-2 bg-[#332718] hover:bg-[#40311e] border border-[#c29b53] text-[#d4a952] rounded-lg text-center font-bold">
+              🖼️ PNG Card
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div class="p-3 bg-[#1b1611] border-t border-[#3a3026] flex items-center justify-between flex-shrink-0">
+        <button id="btn-dossier-sell-meat" class="touch-btn py-2 px-3 bg-[#241e17] border border-[#c29b53] text-[#7d9c66] font-bold text-xs rounded-xl">
+          Sell Venison (+$$)
+        </button>
+        <button id="btn-certify-record" class="touch-btn py-2.5 px-5 bg-[#c29b53] hover:bg-[#d4a952] text-[#120f0c] font-bold uppercase tracking-wider rounded-xl text-xs shadow-md">
+          Inscribe Into Trophy Ledger
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CUSTOM CRAFTED BOW MODAL (EQUIP OR SELL) -->
+  <div id="modal-bow-commission" class="fixed inset-0 zen-backdrop flex items-center justify-center p-3 sm:p-5 z-50 hidden font-mono-data">
+    <div class="bg-[#1b1611] border-2 border-[#c29b53] rounded-2xl max-w-md w-full p-4 space-y-3.5 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#3a3026] pb-2">
+        <span class="font-serif-title font-bold text-sm text-[#c29b53] flex items-center gap-1.5">
+          <span>🪓</span>
+          <span>BOW FINISHED & INSPECTED</span>
+        </span>
+        <button id="btn-close-bow-comm" class="text-[#a39683] hover:text-[#f5f1e8]">✕</button>
+      </div>
+      
+      <div class="p-3 bg-[#17130e] rounded-xl border border-[#332a20] space-y-2">
+        <div class="text-[10px] text-[#7d9c66] font-bold uppercase" id="comm-bow-tag">Masterpiece Bow Crafted</div>
+        <div class="font-serif-title text-base font-bold text-[#f5f1e8]" id="comm-bow-name">65# Custom Osage Reflex-Deflex</div>
+        <div class="text-[11px] text-[#c2aa82]" id="comm-bow-sub">Bocote Riser • Carbon Bamboo Limbs • Beaver Silencers</div>
+        <div class="grid grid-cols-3 gap-2 pt-1 text-[10px] text-center">
+          <div class="bg-[#241e18] p-1.5 rounded border border-[#3a3026]">
+            <span class="text-[#a39683] block">Draw</span>
+            <b class="text-[#f5f1e8]" id="comm-bow-draw">65# @ 28"</b>
+          </div>
+          <div class="bg-[#241e18] p-1.5 rounded border border-[#3a3026]">
+            <span class="text-[#a39683] block">Velocity</span>
+            <b class="text-[#d4a952]" id="comm-bow-speed">194 fps</b>
+          </div>
+          <div class="bg-[#241e18] p-1.5 rounded border border-[#3a3026]">
+            <span class="text-[#a39683] block">Mass</span>
+            <b class="text-[#7d9c66]" id="comm-bow-mass">570 gr</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2.5 pt-1">
+        <button id="btn-equip-crafted-bow" class="touch-btn py-3 px-2 bg-[#272019] hover:bg-[#342b22] border border-[#483d31] text-[#f5f1e8] font-bold rounded-xl text-xs flex flex-col items-center">
+          <span>🏹 Keep & Equip</span>
+          <span class="text-[9px] text-[#a39683]">Add to Hunting Arsenal</span>
+        </button>
+        <button id="btn-sell-crafted-bow" class="touch-btn py-3 px-2 bg-gradient-to-r from-[#ba9148] to-[#d4a952] text-[#120f0c] font-bold rounded-xl text-xs flex flex-col items-center shadow-md">
+          <span id="comm-sell-btn-label">💰 Sell Commission</span>
+          <span class="text-[9px] font-bold text-[#2e2417]" id="comm-sell-profit-sub">+$580 Profit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFICIAL BOONE & CROCKETT / POPE & YOUNG SCORE SHEET MODAL -->
+  <div id="modal-scoresheet" class="fixed inset-0 zen-backdrop flex items-center justify-center p-2 sm:p-4 z-50 hidden font-mono-data">
+    <div class="bg-[#1b1611] border-2 border-[#c29b53] rounded-2xl max-w-2xl w-full max-h-[94vh] flex flex-col shadow-[0_0_65px_rgba(194,155,83,0.3)] overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-3 bg-[#241e17] border-b border-[#3a3026] flex items-center justify-between flex-shrink-0">
+        <div>
+          <div class="text-[9px] text-[#c29b53] uppercase tracking-widest flex items-center gap-1.5">
+            <span id="sheet-header-org">BOONE AND CROCKETT CLUB® / POPE & YOUNG</span>
+            <span class="text-[#514335]">•</span>
+            <span>OFFICIAL SCORING FORM</span>
+          </div>
+          <h3 id="sheet-title" class="font-serif-title text-sm sm:text-base font-bold text-[#f5f1e8] tracking-wide">
+            Whitetail Deer (Odocoileus virginianus)
+          </h3>
+          <div id="sheet-subtitle" class="text-[10px] text-[#a39683]">
+            Exact Columnar Antler Measurements to the Nearest 1/8th of an Inch
+          </div>
+        </div>
+        <button id="btn-close-scoresheet" class="touch-btn text-[#a39683] hover:text-[#f5f1e8] p-1 text-lg">✕</button>
+      </div>
+
+      <!-- Scrollable Score Sheet Content -->
+      <div class="p-3 sm:p-4 overflow-y-auto space-y-3 flex-1 text-xs">
+        
+        <!-- Summary Cards Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+          <div class="bg-[#17130e] p-2 rounded-lg border border-[#332a20]">
+            <div class="text-[9px] text-[#a39683] uppercase">Total Points</div>
+            <div id="sheet-stat-total-points" class="text-[#f5f1e8] font-bold text-sm mt-0.5">17 pts</div>
+            <div id="sheet-stat-rl-points" class="text-[9px] text-[#a39683]">11 R / 6 L</div>
+          </div>
+          <div class="bg-[#17130e] p-2 rounded-lg border border-[#332a20]">
+            <div class="text-[9px] text-[#a39683] uppercase">Inside Spread</div>
+            <div id="sheet-stat-spread" class="text-[#c29b53] font-bold text-sm mt-0.5">20 2/8"</div>
+            <div class="text-[9px] text-[#a39683]">Credit Allowed</div>
+          </div>
+          <div class="bg-[#17130e] p-2 rounded-lg border border-[#332a20]">
+            <div class="text-[9px] text-[#a39683] uppercase">Gross Total</div>
+            <div id="sheet-stat-gross" class="text-[#f5f1e8] font-bold text-sm mt-0.5">194 6/8"</div>
+            <div class="text-[9px] text-[#a39683]">Frame + Abnormal</div>
+          </div>
+          <div class="bg-[#17130e] p-2 rounded-lg border border-[#332a20]">
+            <div class="text-[9px] text-[#a39683] uppercase">Final Net Score</div>
+            <div id="sheet-stat-net" class="text-[#7d9c66] font-bold text-sm mt-0.5">189 2/8"</div>
+            <div id="sheet-stat-category" class="text-[9px] text-[#c29b53]">Non-Typical</div>
+          </div>
+        </div>
+
+        <!-- Official Side-by-Side Columnar Table -->
+        <div class="bg-[#17130e] border border-[#3a3026] rounded-xl overflow-hidden shadow-inner">
+          <div class="bg-[#241e17] border-b border-[#3a3026] px-3 py-1.5 flex items-center justify-between text-[10px] text-[#c29b53] font-bold uppercase tracking-wider">
+            <span>OFFICIAL COLUMNAR MEASUREMENT COMPARISON</span>
+            <span>VALUES IN EIGHTHS (1/8")</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-[11px]">
+              <thead>
+                <tr class="border-b border-[#2d251d] bg-[#1b1611] text-[#a39683] text-[10px] uppercase">
+                  <th class="py-1.5 px-3">Measurement</th>
+                  <th class="py-1.5 px-2 text-right">Right Antler</th>
+                  <th class="py-1.5 px-2 text-right">Left Antler</th>
+                  <th class="py-1.5 px-3 text-right text-[#e66565]">Difference (Deductions)</th>
+                </tr>
+              </thead>
+              <tbody id="sheet-table-body" class="divide-y divide-[#261f17]">
+                <!-- Populated dynamically with Beam, G-1 to G-n, H-1 to H-4 -->
+              </tbody>
+              <tfoot class="bg-[#211a14] border-t-2 border-[#43372b] font-bold">
+                <tr>
+                  <td class="py-2 px-3 text-[#f5f1e8]">Subtotal Column Values</td>
+                  <td id="sheet-subtotal-right" class="py-2 px-2 text-right text-[#f5f1e8] font-mono-data">84 2/8"</td>
+                  <td id="sheet-subtotal-left" class="py-2 px-2 text-right text-[#f5f1e8] font-mono-data">78 6/8"</td>
+                  <td id="sheet-total-deductions" class="py-2 px-3 text-right text-[#e66565] font-mono-data">-5 4/8"</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- Abnormal Points Itemized List -->
+        <div id="sheet-abnormal-container" class="bg-[#17130e] border border-[#3a3026] rounded-xl p-3 space-y-2">
+          <div class="flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-[#c29b53]">
+            <span>ABNORMAL POINTS (KICKERS, DROP TINES, STICKERS, FLYERS)</span>
+            <span id="sheet-abnormal-total-label" class="text-[#f5f1e8]">Total: 31 4/8"</span>
+          </div>
+          <div id="sheet-abnormal-list" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px]">
+            <!-- Itemized points e.g. "R: 7 2/8" Drop Tine", "L: 3 6/8" Split G-2" -->
+          </div>
+        </div>
+
+        <!-- Final Official Score Computation Matrix -->
+        <div class="bg-[#201a14] border border-[#3a3026] rounded-xl p-3 space-y-1.5 text-[11px]">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-[#c29b53] border-b border-[#30261b] pb-1">
+            OFFICIAL B&C / P&Y SCORE CALCULATION MATRIX
+          </div>
+          <div class="flex justify-between py-0.5">
+            <span class="text-[#a39683]">Inside Spread Credit:</span>
+            <span id="sheet-calc-spread" class="text-[#f5f1e8] font-bold">20 2/8"</span>
+          </div>
+          <div class="flex justify-between py-0.5">
+            <span class="text-[#a39683]">Right Typical Frame:</span>
+            <span id="sheet-calc-right" class="text-[#f5f1e8] font-bold">84 2/8"</span>
+          </div>
+          <div class="flex justify-between py-0.5">
+            <span class="text-[#a39683]">Left Typical Frame:</span>
+            <span id="sheet-calc-left" class="text-[#f5f1e8] font-bold">78 6/8"</span>
+          </div>
+          <div class="flex justify-between py-0.5 border-t border-[#30261b]">
+            <span class="text-[#a39683]">Gross Typical Frame Score:</span>
+            <span id="sheet-calc-gross-typical" class="text-[#f5f1e8] font-bold">183 2/8"</span>
+          </div>
+          <div class="flex justify-between py-0.5">
+            <span class="text-[#a39683]">Total Abnormal Points (Inches):</span>
+            <span id="sheet-calc-abnormal" class="text-[#d4a952] font-bold">+11 4/8"</span>
+          </div>
+          <div class="flex justify-between py-0.5 border-t border-[#30261b] font-bold">
+            <span class="text-[#f5f1e8]">GROSS TOTAL SCORE:</span>
+            <span id="sheet-calc-gross-total" class="text-[#f5f1e8] text-xs">194 6/8"</span>
+          </div>
+          <div class="flex justify-between py-0.5 text-[#e66565]">
+            <span>Side-to-Side Symmetry Deductions:</span>
+            <span id="sheet-calc-deductions" class="font-bold">-5 4/8"</span>
+          </div>
+          <div class="flex justify-between py-1 border-t-2 border-[#43372b] text-xs">
+            <span class="text-[#a39683]">Final Net Typical Score:</span>
+            <span id="sheet-calc-net-typical" class="text-[#f5f1e8] font-bold">177 6/8"</span>
+          </div>
+          <div class="flex justify-between py-1 bg-[#282017] p-2 rounded-lg border border-[#c29b53] text-xs font-bold">
+            <span class="text-[#d4a952]">FINAL NET NON-TYPICAL SCORE:</span>
+            <span id="sheet-calc-net-nontypical" class="text-[#7d9c66] text-sm">189 2/8"</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Score Sheet Footer -->
+      <div class="p-3 bg-[#1b1611] border-t border-[#3a3026] flex items-center justify-between flex-shrink-0 text-xs">
+        <span class="text-[#a39683] text-[10px] italic">Official Pope & Young / Boone & Crockett calculation protocols applied.</span>
+        <button id="btn-close-scoresheet-foot" class="touch-btn py-1.5 px-4 bg-[#272019] border border-[#483d31] text-[#f5f1e8] rounded-xl font-bold hover:bg-[#342b22]">
+          Close Score Sheet
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IMPORT CODE MODAL -->
+  <div id="modal-import" class="fixed inset-0 zen-backdrop flex items-center justify-center p-4 z-50 hidden font-mono-data">
+    <div class="bg-[#1b1611] border border-[#c29b53] rounded-2xl max-w-sm w-full p-4 space-y-3 text-xs shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#3a3026] pb-2">
+        <span class="font-bold text-[#c29b53]">IMPORT FRIEND'S TROPHY CODE</span>
+        <button id="btn-close-import" class="text-[#a39683] hover:text-[#f5f1e8]">✕</button>
+      </div>
+      <p class="font-journal italic text-[#a39683] text-xs">
+        Paste a base64 trophy share code exported by a fellow archer to view and inscribe their certified harvest into your lodge.
+      </p>
+      <textarea id="import-code-input" class="w-full h-24 bg-[#17130e] border border-[#3a3026] rounded-xl p-2.5 text-[#f5f1e8] font-mono-data text-[10px] focus:outline-none focus:border-[#c29b53]" placeholder="Paste share code here..."></textarea>
+      <div id="import-error-msg" class="text-[#e66565] text-[10px] hidden">Invalid trophy code.</div>
+      <button id="btn-submit-import-code" class="w-full py-2.5 bg-[#c29b53] text-[#120f0c] rounded-xl font-bold uppercase tracking-wider hover:bg-[#d4a952]">
+        Verify & Load Harvest
+      </button>
+    </div>
+  </div>
+
+  <!-- GOD MODE & DEV CONSOLE MODAL -->
+  <div id="modal-god" class="fixed inset-0 zen-backdrop flex items-center justify-center p-4 z-50 hidden font-mono-data">
+    <div class="bg-[#1b1611] border-2 border-[#c29b53] rounded-2xl max-w-md w-full p-4 space-y-3 text-xs shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-[#3a3026] pb-2">
+        <span class="font-bold text-[#c29b53] flex items-center gap-1.5 text-sm">
+          <span>⚡</span>
+          <span>GOD MODE & SPAWN CONSOLE</span>
+        </span>
+        <button id="btn-close-god" class="text-[#a39683] hover:text-[#f5f1e8]">✕</button>
+      </div>
+      
+      <!-- Custom Spawner -->
+      <div class="space-y-2 bg-[#17130e] p-3 rounded-xl border border-[#332a20]">
+        <div class="text-[10px] text-[#c29b53] font-bold uppercase tracking-wider">1. SPAWN TARGET SPECIES</div>
+        <div class="grid grid-cols-3 gap-1.5">
+          <button class="btn-god-species touch-btn p-1.5 rounded bg-[#272019] border border-[#3a3026] text-[#f5f1e8] text-[10px] font-bold" data-species="whitetail">Whitetail</button>
+          <button class="btn-god-species touch-btn p-1.5 rounded bg-[#272019] border border-[#3a3026] text-[#a39683] text-[10px] font-bold" data-species="elk">Rocky Elk</button>
+          <button class="btn-god-species touch-btn p-1.5 rounded bg-[#272019] border border-[#3a3026] text-[#a39683] text-[10px] font-bold" data-species="stag">Red Stag</button>
+        </div>
+
+        <div class="text-[10px] text-[#c29b53] font-bold uppercase tracking-wider mt-2">2. SELECT RARE FUR MORPH</div>
+        <select id="god-select-fur" class="w-full bg-[#272019] border border-[#3a3026] rounded-lg p-2 text-[#f5f1e8] text-[11px] outline-none">
+          <!-- Dynamically populated -->
+        </select>
+
+        <div class="text-[10px] text-[#c29b53] font-bold uppercase tracking-wider mt-2">3. CLASS & MATURITY</div>
+        <select id="god-select-class" class="w-full bg-[#272019] border border-[#3a3026] rounded-lg p-2 text-[#f5f1e8] text-[11px] outline-none">
+          <option value="trophy">Trophy Monarch (Record Class Antlers)</option>
+          <option value="mature_doe">Mature Doe / Cow / Hind (Venison)</option>
+          <option value="fawn">Spotted Yearling / Calf</option>
+        </select>
+
+        <!-- Dedicated Antler Rack Generator Controls -->
+        <div class="text-[10px] text-[#c29b53] font-bold uppercase tracking-wider mt-2">4. ANTLER RACK ARCHITECTURE</div>
+        <select id="god-select-rack-type" class="w-full bg-[#272019] border border-[#3a3026] rounded-lg p-2 text-[#f5f1e8] text-[11px] outline-none">
+          <option value="random">Natural Biometric Variation (Balanced / Wild)</option>
+          <option value="freak_nontypical">Freak Non-Typical (20+ Points, 190"-220"+, Double Drop Tines)</option>
+          <option value="lopsided_outlier">Lopsided Outlier (Massive Right Palmated vs Scrub Basket Left)</option>
+          <option value="perfect_typical">Clean Typical 10-Pointer (5x5 with Sub-3" Deductions)</option>
+          <option value="cactus_rack">Freak Multi-Point Palmated Cluster (22+ Points)</option>
+        </select>
+
+        <button id="god-btn-spawn" class="w-full py-2 mt-2 bg-[#c29b53] text-[#120f0c] rounded-lg font-bold uppercase tracking-wider hover:bg-[#d4a952]">
+          Spawn Specimen into Shooting Lane
+        </button>
+      </div>
+
+      <!-- Quick Toggles -->
+      <div class="space-y-2">
+        <button id="god-btn-perfect-aim" class="w-full py-2 bg-[#272019] border border-[#483d31] rounded-lg text-left px-3 text-[#7d9c66] font-bold hover:bg-[#342b22]">
+          🎯 Auto-Align Perfect Heart Shot Sliders
+        </button>
+        <button id="god-btn-instant-harvest" class="w-full py-2 bg-[#272019] border border-[#483d31] rounded-lg text-left px-3 text-[#d4a952] font-bold hover:bg-[#342b22]">
+          ⚡ Instant Harvest Current Encounter
+        </button>
+        <button id="god-btn-replenish-tags" class="w-full py-2 bg-[#272019] border border-[#483d31] rounded-lg text-left px-3 text-[#f5f1e8] hover:bg-[#342b22]">
+          🏷️ Replenish All Big Game Tags (10 Tags)
+        </button>
+        <button id="god-btn-seed-trophies" class="w-full py-2 bg-[#272019] border border-[#483d31] rounded-lg text-left px-3 text-[#f5f1e8] hover:bg-[#342b22]">
+          🏆 Populate Lodge with 3 Master Trophies
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offscreen canvas for generating downloadable PNG certificates -->
+  <canvas id="offscreen-cert-canvas" width="1200" height="700" style="display:none;"></canvas>
+
+  <script>
+    /* =====================================================================
+       WEB AUDIO SYNTHESIZER (Wind, Recurve Thump, Hoyt Snap, Impact, Fanfare)
+       ===================================================================== */
+    class ArcheryAudio {
+      constructor() {
+        this.ctx = null;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+      playWoodCraft() {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(320, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, this.ctx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.15);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.15);
+      }
+      playCashChime() {
+        if (!this.ctx) return;
+        [523.25, 659.25, 783.99].forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.06);
+          gain.gain.setValueAtTime(0.09, this.ctx.currentTime + idx * 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.06 + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(this.ctx.currentTime + idx * 0.06);
+          osc.stop(this.ctx.currentTime + idx * 0.06 + 0.35);
+        });
+      }
+      playRecurveShot() {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(45, this.ctx.currentTime + 0.16);
+        gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.16);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.16);
+      }
+      playHeavyLongbowShot() {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(95, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(32, this.ctx.currentTime + 0.22);
+        gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.22);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.22);
+      }
+      playHoytSnap() {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(420, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(90, this.ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.14, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.08);
+      }
+      playQuietCompoundShot() {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(260, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(65, this.ctx.currentTime + 0.09);
+        gain.gain.setValueAtTime(0.11, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.09);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.09);
+      }
+      playImpactThump() {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(95, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, this.ctx.currentTime + 0.22);
+        gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.22);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.22);
+      }
+      playFanfare() {
+        if (!this.ctx) return;
+        [220, 277, 330, 440].forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.07);
+          gain.gain.setValueAtTime(0.1, this.ctx.currentTime + idx * 0.07);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.07 + 0.6);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(this.ctx.currentTime + idx * 0.07);
+          osc.stop(this.ctx.currentTime + idx * 0.07 + 0.6);
+        });
+      }
+    }
+    const audio = new ArcheryAudio();
+
+    /* =====================================================================
+       BOW ARSENAL DATABASE
+       ===================================================================== */
+    const BOW_DATABASE = {
+      recurve_60: {
+        id: 'recurve_60',
+        type: 'traditional',
+        name: '60# Custom One-Piece Recurve',
+        shortName: '60# Custom Recurve',
+        subtitle: 'Osage & Bocote Core • 62" AMO • Flemish Fast-Flight String',
+        drawWeight: '60 lbs @ 28"',
+        arrowMass: '530 grains',
+        velocityFps: 188,
+        sightStyle: 'Instinctive / Gap',
+        icon: '🏹',
+        desc: 'Deadly whisper-quiet release with heavy cut-on-contact 2-blade broadhead. Parabolic arc requires true waist-bend form and low-crease hold to account for skittish deer string jumping.'
+      },
+      bear_kodiak_65: {
+        id: 'bear_kodiak_65',
+        type: 'traditional',
+        name: '65# 1970 Vintage Bear Super Kodiak',
+        shortName: '65# Bear Super Kodiak',
+        subtitle: 'Black Phenolic & Bubinga • 64" AMO • Fred Bear Heritage D-97',
+        drawWeight: '65 lbs @ 28"',
+        arrowMass: '565 grains',
+        velocityFps: 195,
+        sightStyle: 'Split-Vision',
+        icon: '🏹',
+        desc: 'The iconic gray-bark Fred Bear sovereign recurve. Smooth, forgiving cast pushing heavy cedar-footed carbon arrows with immense punch through heavy ribs.'
+      },
+      monster_longbow_90: {
+        id: 'monster_longbow_90',
+        type: 'traditional',
+        name: '90# Custom "Ironwood Goliath" Heavy War-Longbow',
+        shortName: '90# Goliath Longbow',
+        subtitle: 'Tri-Lam Bamboo & Ipe Ironwood • 68" AMO • Buffalo Horn Nocks',
+        drawWeight: '90 lbs @ 28"',
+        arrowMass: '760 grains',
+        velocityFps: 178,
+        sightStyle: 'Instinctive Heavy Arc',
+        icon: '🐗',
+        desc: 'A devastating beast of a traditional bow. Throws a mammoth 760-grain tapered ash arrow like a steel spear—carries so much kinetic momentum it punches clean through heavy scapula shoulder blades.'
+      },
+      plains_cazador_55: {
+        id: 'plains_cazador_55',
+        type: 'traditional',
+        name: '55# Great Plains "Cazador" Takedown',
+        shortName: '55# Cazador Takedown',
+        subtitle: 'Actionwood & Walnut Riser • 60" AMO • Beaver Tail Grip',
+        drawWeight: '55 lbs @ 28"',
+        arrowMass: '475 grains',
+        velocityFps: 184,
+        sightStyle: 'Gap-Shooting',
+        icon: '🏹',
+        desc: 'A super-smooth, light-handling backcountry takedown. Zero hand shock, lightning quiet on release, making skittish deer far less prone to violent string jumping.'
+      },
+      hoyt_carbon_rx8: {
+        id: 'hoyt_carbon_rx8',
+        type: 'compound',
+        name: '70# Hoyt Carbon Alpha X / RX-8',
+        shortName: '70# Hoyt Carbon',
+        subtitle: 'HBX Gen 4 Cams • 30" ATA • 5-Pin Fiber Optic Sight with Level',
+        drawWeight: '70 lbs (85% Letoff)',
+        arrowMass: '425 grains',
+        velocityFps: 318,
+        sightStyle: '20/30/40yd Fiber Pins',
+        icon: '⚙️',
+        desc: 'Warm-to-the-touch hollow carbon riser flying flat at 318 fps. Arrives at 20 yards in only 0.19 seconds before deer can drop into their knees.'
+      },
+      mathews_lift_33: {
+        id: 'mathews_lift_33',
+        type: 'compound',
+        name: '70# Mathews Phase 4 / Lift 33',
+        shortName: '70# Mathews Lift 33',
+        subtitle: '33" Long Axle-to-Axle • Resistance Phase Damping • Bridge-Lock Sight',
+        drawWeight: '70 lbs (80% Letoff)',
+        arrowMass: '445 grains',
+        velocityFps: 314,
+        sightStyle: 'Single-Pin Slider Dial',
+        icon: '🎯',
+        desc: 'Longer 33" ATA hunting platform provides unmatched string angle and peep alignment. Shot silence is near-supernatural with virtually zero acoustic string report.'
+      },
+      elite_omnia_34: {
+        id: 'elite_omnia_34',
+        type: 'compound',
+        name: '70# Elite Omnia / Era 34',
+        shortName: '70# Elite Era 34',
+        subtitle: '34" Long ATA • S.E.T. Micro-Tune Technology • Micro-Adjustable Letoff',
+        drawWeight: '70 lbs (85% Dwell)',
+        arrowMass: '435 grains',
+        velocityFps: 310,
+        sightStyle: 'Micro 3-Pin Horizontal',
+        icon: '🎯',
+        desc: 'Legendary rock-solid back wall and enormous dwell zone. The extended 34" axle-to-axle design holds steady as a bench rest even during steep waist-bent angles from the stand.'
+      },
+      obsession_finalcut_35: {
+        id: 'obsession_finalcut_35',
+        type: 'compound',
+        name: '75# Obsession Final Cut 35',
+        shortName: '75# Obsession 35',
+        subtitle: '35" Extended Axle-to-Axle • Dual Track Hybrid Cams • High Inertia Wall',
+        drawWeight: '75 lbs (80% Letoff)',
+        arrowMass: '465 grains',
+        velocityFps: 322,
+        sightStyle: 'Target-Hunter Multi-Pin',
+        icon: '⚡',
+        desc: 'A powerhouse long-axle rig. The 35" wheelbase gives tournament-grade stability while 75-lb limbs drive heavy mechanical broadheads with immense downrange momentum.'
+      }
+    };
+
+    /* =====================================================================
+       WOODSMAN SKILLS DEFINITION
+       ===================================================================== */
+    const SKILLS_CATALOG = {
+      instinctive_anchor: {
+        id: 'instinctive_anchor',
+        name: 'Instinctive Form & Anchor',
+        icon: '📐',
+        desc: 'Widens treestand waist-bend sweet spot by ±2° per rank.',
+        maxRank: 5,
+        baseCost: 280,
+        costMult: 1.6
+      },
+      string_whisper: {
+        id: 'string_whisper',
+        name: 'String Silence & Catwhiskers',
+        icon: '🤫',
+        desc: 'Dampens bow report, reducing string-jump knee drop by 20% per rank.',
+        maxRank: 5,
+        baseCost: 320,
+        costMult: 1.65
+      },
+      bone_splitter: {
+        id: 'bone_splitter',
+        name: 'Bone-Splitter Broadhead Hone',
+        icon: '🔪',
+        desc: 'Increases kinetic penetration to smash heavy shoulder blades.',
+        maxRank: 5,
+        baseCost: 350,
+        costMult: 1.7
+      },
+      master_bowyer: {
+        id: 'master_bowyer',
+        name: "Master Bowyer's Tradecraft",
+        icon: '🪵',
+        desc: 'Crafted bow commission values +25% and arrow velocity +4 fps per rank.',
+        maxRank: 5,
+        baseCost: 400,
+        costMult: 1.75
+      },
+      scouting_cameras: {
+        id: 'scouting_cameras',
+        name: 'Rut Scouting & Trail Cameras',
+        icon: '📸',
+        desc: 'Doubles encounter rate of rare coat morphs and monster bucks.',
+        maxRank: 5,
+        baseCost: 450,
+        costMult: 1.8
+      }
+    };
+
+    /* =====================================================================
+       SPECIES CONFIGURATION & ANTLER SCORING ENGINE
+       ===================================================================== */
+    const SPECIES_CONFIG = {
+      whitetail: {
+        commonName: 'Whitetail Deer',
+        latin: 'Odocoileus virginianus',
+        scoreOrg: 'Pope & Young',
+        furMorphs: [
+          { id: 'classic', name: 'Autumn Slate-Grey', rarity: 0.96, badge: 'CLASSIC COAT' },
+          { id: 'piebald', name: 'Piebald Calico', rarity: 0.025, badge: 'RARE PIEBALD' },
+          { id: 'melanistic', name: 'Obsidian Melanistic', rarity: 0.005, badge: '1-IN-500K MELANISTIC' },
+          { id: 'leucistic', name: 'Ghost Leucistic', rarity: 0.008, badge: 'GHOST LEUCISTIC' },
+          { id: 'albino', name: 'Pure White Albino', rarity: 0.002, badge: 'LEGENDARY ALBINO' }
+        ],
+        classes: {
+          trophy: { name: 'Mature Antlered Monarch', sex: 'Buck', weightRange: [190, 265], points: 'Antlered', desc: 'Cruising past the stand broadside at 20 yards, checking the scrape line.' },
+          mature_doe: { name: 'Mature Prime Doe', sex: 'Doe', weightRange: [130, 175], points: 'Antlerless', desc: 'Feeding cautiously on white oak acorns directly in the shooting lane.' },
+          fawn: { name: 'Late Spring Fawn', sex: 'Fawn', weightRange: [65, 95], points: 'Spotted', desc: 'Browsing tender shoots beside the brush pile.' }
+        }
+      },
+      elk: {
+        commonName: 'Rocky Mountain Elk',
+        latin: 'Cervus canadensis nelsoni',
+        scoreOrg: 'Boone & Crockett',
+        furMorphs: [
+          { id: 'classic', name: 'High Country Tawny Dun', rarity: 0.96, badge: 'CLASSIC DUST' },
+          { id: 'silver', name: 'Silver Frost Mantle', rarity: 0.025, badge: 'RARE SILVER MANTLE' },
+          { id: 'ochre', name: 'Golden Ochre Dun', rarity: 0.012, badge: 'GOLDEN OCHRE' },
+          { id: 'melanistic', name: 'Coal Melanistic Bull', rarity: 0.003, badge: 'MELANISTIC BULL' }
+        ],
+        classes: {
+          trophy: { name: 'Royal 6x6 Bull Elk', sex: 'Bull', weightRange: [720, 890], points: 'Antlered', desc: 'Stately bull raking an aspen trunk 20 yards out with deep guttural chuckles.' },
+          mature_doe: { name: 'Mature Lead Cow', sex: 'Cow', weightRange: [480, 580], points: 'Antlerless', desc: 'Leading the herd down the timber corridor with high vigilance.' },
+          fawn: { name: 'Spotted Spring Calf', sex: 'Calf', weightRange: [160, 230], points: 'Calf', desc: 'Trailing quietly behind the cows through the ferns.' }
+        }
+      },
+      stag: {
+        commonName: 'Highland Red Stag',
+        latin: 'Cervus elaphus scoticus',
+        scoreOrg: 'CIC European',
+        furMorphs: [
+          { id: 'classic', name: 'Highland Russet Red', rarity: 0.96, badge: 'HIGHLAND RUSSET' },
+          { id: 'piebald', name: 'Heather Piebald', rarity: 0.025, badge: 'PIEBALD STAG' },
+          { id: 'white_hart', name: 'Legendary White Hart', rarity: 0.003, badge: 'MYTHICAL WHITE HART' },
+          { id: 'obsidian', name: 'Midnight Obsidian Stag', rarity: 0.012, badge: 'OBSIDIAN STAG' }
+        ],
+        classes: {
+          trophy: { name: 'Imperial Crown Red Stag', sex: 'Stag', weightRange: [380, 520], points: 'Antlered', desc: 'Roaring into the mist with heavy multipronged crown antlers.' },
+          mature_doe: { name: 'Mature Highland Hind', sex: 'Hind', weightRange: [220, 310], points: 'Antlerless', desc: 'Stepping softly through the wet bracken.' },
+          fawn: { name: 'Highland Calf', sex: 'Calf', weightRange: [90, 140], points: 'Calf', desc: 'Sheltered in the heather beside the burns.' }
+        }
+      }
+    };
+
+    function toEighths(num) {
+      if (num === null || num === undefined || isNaN(num) || num <= 0) return '0"';
+      const whole = Math.floor(num);
+      const frac = Math.round((num - whole) * 8);
+      if (frac === 0) return `${whole}"`;
+      if (frac === 8) return `${whole + 1}"`;
+      return `${whole} ${frac}/8"`;
+    }
+
+    function generateDetailedAntlers(spKey, isTrophy, rackPreset) {
+      if (!isTrophy) {
+        return {
+          hasAntlers: false,
+          totalPoints: 0,
+          rightPoints: 0,
+          leftPoints: 0,
+          finalNetScore: 0,
+          summaryString: 'Antlerless',
+          items: []
+        };
+      }
+
+      let insideSpread = 0;
+      let rightBeam = 0;
+      let leftBeam = 0;
+      const tines = [];
+      const circumferences = [];
+      const abnormalPoints = [];
+
+      if (spKey === 'whitetail') {
+        if (rackPreset === 'perfect_typical') {
+          insideSpread = 20.25;
+          rightBeam = 24.5;
+          leftBeam = 24.375;
+          const gLengths = [4.5, 10.25, 9.75, 6.5];
+          gLengths.forEach((len, idx) => {
+            const r = len + (Math.random() * 0.25 - 0.125);
+            const l = len + (Math.random() * 0.25 - 0.125);
+            tines.push({ name: `G-${idx + 1}`, right: r, left: l, diff: Math.abs(r - l) });
+          });
+          for (let i = 1; i <= 4; i++) {
+            const h = 4.875 - i * 0.2;
+            circumferences.push({ name: `H-${i}`, right: h, left: h, diff: 0 });
+          }
+        } else if (rackPreset === 'lopsided_outlier') {
+          insideSpread = 18.5;
+          rightBeam = 27.25;
+          leftBeam = 18.125;
+          tines.push({ name: 'G-1', right: 5.75, left: 2.25, diff: 3.5 });
+          tines.push({ name: 'G-2', right: 12.5, left: 5.0, diff: 7.5 });
+          tines.push({ name: 'G-3', right: 11.25, left: 3.5, diff: 7.75 });
+          tines.push({ name: 'G-4', right: 8.75, left: 0, diff: 8.75 });
+          tines.push({ name: 'G-5', right: 5.25, left: 0, diff: 5.25 });
+          circumferences.push({ name: 'H-1', right: 6.25, left: 4.125, diff: 2.125 });
+          circumferences.push({ name: 'H-2', right: 5.75, left: 3.875, diff: 1.875 });
+          circumferences.push({ name: 'H-3', right: 5.25, left: 3.5, diff: 1.75 });
+          circumferences.push({ name: 'H-4', right: 4.875, left: 3.0, diff: 1.875 });
+          abnormalPoints.push({ side: 'Right', desc: 'Drop Tine', length: 7.5 });
+          abnormalPoints.push({ side: 'Right', desc: 'Forked G-2 Kicker', length: 4.25 });
+        } else if (rackPreset === 'freak_nontypical' || rackPreset === 'cactus_rack') {
+          insideSpread = 22.75;
+          rightBeam = 26.5;
+          leftBeam = 25.875;
+          [6.25, 11.5, 10.75, 8.25, 4.5].forEach((len, idx) => {
+            const r = len + (Math.random() * 0.8 - 0.4);
+            const l = len + (Math.random() * 0.8 - 0.4);
+            tines.push({ name: `G-${idx + 1}`, right: r, left: l, diff: Math.abs(r - l) });
+          });
+          [6.5, 5.875, 5.375, 4.875].forEach((h, idx) => {
+            circumferences.push({ name: `H-${idx + 1}`, right: h, left: h - 0.25, diff: 0.25 });
+          });
+          abnormalPoints.push({ side: 'Right', desc: 'Main Beam Drop Tine', length: 8.75 });
+          abnormalPoints.push({ side: 'Left', desc: 'Split Brow Tine (G-1)', length: 4.5 });
+          abnormalPoints.push({ side: 'Right', desc: 'Base Kicker', length: 3.75 });
+          abnormalPoints.push({ side: 'Left', desc: 'G-3 Flyer', length: 5.25 });
+        } else {
+          // Natural Biometric Variation
+          insideSpread = 16.5 + Math.random() * 5.5;
+          rightBeam = 22.0 + Math.random() * 4.5;
+          leftBeam = rightBeam + (Math.random() * 2.0 - 1.0);
+          const tineCount = Math.random() > 0.35 ? 4 : 3;
+          for (let i = 1; i <= tineCount; i++) {
+            const baseLen = i === 2 || i === 3 ? (8.0 + Math.random() * 3.5) : (4.0 + Math.random() * 2.5);
+            const r = baseLen + (Math.random() * 0.8 - 0.4);
+            const l = baseLen + (Math.random() * 0.8 - 0.4);
+            tines.push({ name: `G-${i}`, right: r, left: l, diff: Math.abs(r - l) });
+          }
+          for (let i = 1; i <= 4; i++) {
+            const h = (4.75 - i * 0.25) + (Math.random() * 0.5 - 0.25);
+            circumferences.push({ name: `H-${i}`, right: h, left: h + (Math.random() * 0.3 - 0.15), diff: Math.abs(Math.random() * 0.3) });
+          }
+          if (Math.random() < 0.28) {
+            abnormalPoints.push({ side: Math.random() > 0.5 ? 'Right' : 'Left', desc: 'Drop Tine', length: 4.5 + Math.random() * 4.0 });
+          }
+        }
+      } else if (spKey === 'elk') {
+        insideSpread = 38.0 + Math.random() * 10.0;
+        rightBeam = 50.0 + Math.random() * 8.0;
+        leftBeam = rightBeam + (Math.random() * 2.0 - 1.0);
+        for (let i = 1; i <= 5; i++) {
+          const r = 12.0 + Math.random() * 6.0;
+          const l = r + (Math.random() * 2.0 - 1.0);
+          tines.push({ name: `G-${i}`, right: r, left: l, diff: Math.abs(r - l) });
+        }
+        for (let i = 1; i <= 4; i++) {
+          const h = 7.5 + Math.random() * 1.5;
+          circumferences.push({ name: `H-${i}`, right: h, left: h, diff: 0 });
+        }
+        if (Math.random() < 0.25) {
+          abnormalPoints.push({ side: 'Right', desc: 'Whale Tail Extra Point', length: 6.5 + Math.random() * 4.0 });
+        }
+      } else {
+        // Red Stag
+        insideSpread = 28.0 + Math.random() * 8.0;
+        rightBeam = 33.0 + Math.random() * 6.0;
+        leftBeam = rightBeam + (Math.random() * 1.5 - 0.75);
+        for (let i = 1; i <= 4; i++) {
+          const r = 8.5 + Math.random() * 4.0;
+          const l = r + (Math.random() * 1.5 - 0.75);
+          tines.push({ name: `G-${i}`, right: r, left: l, diff: Math.abs(r - l) });
+        }
+        for (let i = 1; i <= 4; i++) {
+          const h = 5.5 + Math.random() * 1.2;
+          circumferences.push({ name: `H-${i}`, right: h, left: h, diff: 0 });
+        }
+        abnormalPoints.push({ side: 'Right', desc: 'Crown Point', length: 4.0 + Math.random() * 3.0 });
+        abnormalPoints.push({ side: 'Left', desc: 'Crown Point', length: 4.0 + Math.random() * 3.0 });
+      }
+
+      // Compute subtotals
+      let rightSubtotal = rightBeam;
+      let leftSubtotal = leftBeam;
+      let totalDeductions = Math.abs(rightBeam - leftBeam);
+
+      tines.forEach(t => {
+        rightSubtotal += t.right;
+        leftSubtotal += t.left;
+        totalDeductions += t.diff;
+      });
+
+      circumferences.forEach(c => {
+        rightSubtotal += c.right;
+        leftSubtotal += c.left;
+        totalDeductions += c.diff;
+      });
+
+      let totalAbnormal = 0;
+      abnormalPoints.forEach(a => { totalAbnormal += a.length; });
+
+      const grossTypicalFrame = insideSpread + rightSubtotal + leftSubtotal;
+      const grossTotalScore = grossTypicalFrame + totalAbnormal;
+      const netTypicalScore = grossTypicalFrame - totalDeductions;
+      const netNonTypicalScore = grossTotalScore - totalDeductions;
+
+      const isNonTypical = totalAbnormal >= 8.0;
+      const finalNetScore = isNonTypical ? netNonTypicalScore : netTypicalScore;
+
+      let rightPoints = 1 + tines.filter(t => t.right > 0).length + abnormalPoints.filter(a => a.side === 'Right').length;
+      let leftPoints = 1 + tines.filter(t => t.left > 0).length + abnormalPoints.filter(a => a.side === 'Left').length;
+      let totalPoints = rightPoints + leftPoints;
+
+      const summaryString = `${totalPoints}-Point ${isNonTypical ? 'Non-Typical' : 'Typical'} (${rightPoints} R, ${leftPoints} L${abnormalPoints.length > 0 ? ` with ${abnormalPoints.length} Abnormal` : ''})`;
+
+      return {
+        hasAntlers: true,
+        insideSpread,
+        rightBeam,
+        leftBeam,
+        tines,
+        circumferences,
+        abnormalPoints,
+        rightSubtotal,
+        leftSubtotal,
+        totalDeductions,
+        grossTypicalFrame,
+        totalAbnormal,
+        grossTotalScore,
+        netTypicalScore,
+        netNonTypicalScore,
+        isNonTypical,
+        finalNetScore,
+        totalPoints,
+        rightPoints,
+        leftPoints,
+        summaryString
+      };
+    }
+
+    /* =====================================================================
+       PERSISTENT STATE & STORAGE
+       ===================================================================== */
+    const SAVE_KEY = 'big_game_archery_journal_v3';
+
+    let State = {
+      funds: 650,
+      activeTags: 3,
+      freezerMeatLbs: 0,
+      equippedBow: 'recurve_60',
+      currentSpecies: 'whitetail',
+      activeEncounter: null,
+      sliderWaist: 22,
+      sliderWindage: -4,
+      sliderYardage: 19,
+      harvests: [],
+      skills: {
+        instinctive_anchor: 0,
+        string_whisper: 0,
+        bone_splitter: 0,
+        master_bowyer: 0,
+        scouting_cameras: 0
+      },
+      customBows: []
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(SAVE_KEY);
+        if (raw) Object.assign(State, JSON.parse(raw));
+        if (State.equippedBow === 'recurve') State.equippedBow = 'recurve_60';
+        if (State.equippedBow === 'hoyt') State.equippedBow = 'hoyt_carbon_rx8';
+        if (!BOW_DATABASE[State.equippedBow] && !State.customBows.some(b => b.id === State.equippedBow)) {
+          State.equippedBow = 'recurve_60';
+        }
+        if (!State.funds && State.funds !== 0) State.funds = 650;
+        if (!State.skills) State.skills = { instinctive_anchor: 0, string_whisper: 0, bone_splitter: 0, master_bowyer: 0, scouting_cameras: 0 };
+        if (!State.customBows) State.customBows = [];
+      } catch (e) {}
+    }
+    function saveState() {
+      try {
+        localStorage.setItem(SAVE_KEY, JSON.stringify(State));
+      } catch (e) {}
+    }
+
+    function getEquippedBow() {
+      const custom = State.customBows.find(b => b.id === State.equippedBow);
+      if (custom) return custom;
+      return BOW_DATABASE[State.equippedBow] || BOW_DATABASE.recurve_60;
+    }
+
+    /* =====================================================================
+       ENCOUNTER ENGINE (INTEGRATED WITH SCOUTING CAMERAS SKILL)
+       ===================================================================== */
+    let godOverride = null;
+
+    function generateEncounter() {
+      const spKey = godOverride ? godOverride.species : State.currentSpecies;
+      const sp = SPECIES_CONFIG[spKey];
+      const scoutBonus = 1 + (State.skills.scouting_cameras * 0.6);
+
+      // Pick Fur Morph with Scouting Camera Boost
+      let morph = sp.furMorphs[0];
+      if (godOverride && godOverride.furId) {
+        morph = sp.furMorphs.find(m => m.id === godOverride.furId) || morph;
+      } else {
+        const roll = Math.random();
+        let acc = 0;
+        for (let i = 1; i < sp.furMorphs.length; i++) {
+          const boostedRarity = sp.furMorphs[i].rarity * scoutBonus;
+          acc += boostedRarity;
+          if (roll <= acc) { morph = sp.furMorphs[i]; break; }
+        }
+      }
+
+      // Pick Class (Trophy, Doe, Fawn)
+      let cKey = 'trophy';
+      if (godOverride && godOverride.classKey) {
+        cKey = godOverride.classKey;
+      } else {
+        const cRoll = Math.random();
+        const trophyThreshold = 0.60 - (State.skills.scouting_cameras * 0.05);
+        if (cRoll < trophyThreshold) cKey = 'trophy';
+        else if (cRoll < 0.90) cKey = 'mature_doe';
+        else cKey = 'fawn';
+      }
+
+      const cls = sp.classes[cKey];
+
+      // Slant Range (20ft = 6.67 yards elevation)
+      const slantRange = parseFloat((19.2 + Math.random() * 2.5).toFixed(1));
+      const horizRange = parseFloat(Math.sqrt(Math.max(0, Math.pow(slantRange, 2) - Math.pow(6.67, 2))).toFixed(1));
+
+      // Weight
+      const wt = Math.round(cls.weightRange[0] + Math.random() * (cls.weightRange[1] - cls.weightRange[0]));
+
+      // Detailed Antler Scoring Generation
+      const isTrophy = cKey === 'trophy';
+      const rackPreset = godOverride && godOverride.rackPreset ? godOverride.rackPreset : 'random';
+      const antlerData = generateDetailedAntlers(spKey, isTrophy, rackPreset);
+
+      const isFeeding = Math.random() > 0.4;
+      const alertState = isFeeding ? 'Relaxed Feeding (Head Down)' : 'Alert / Pacing (Ears Forward)';
+
+      godOverride = null;
+
+      return {
+        speciesKey: spKey,
+        speciesData: sp,
+        cls: cls,
+        morph: morph,
+        slantRange: slantRange,
+        horizRange: horizRange,
+        liveWeight: wt,
+        score: antlerData.finalNetScore,
+        antlers: antlerData,
+        isFeeding: isFeeding,
+        alertState: alertState
+      };
+    }
+
+    /* =====================================================================
+       STREAMLINED SHOT EXECUTION & DIRECT HARVEST ENGINE
+       ===================================================================== */
+    function executeRelease() {
+      const enc = State.activeEncounter;
+      if (!enc) return;
+
+      const bow = getEquippedBow();
+      audio.init();
+
+      if (bow.type === 'traditional') {
+        if (bow.id.includes('warbow') || bow.id === 'monster_longbow_90') {
+          audio.playHeavyLongbowShot();
+        } else {
+          audio.playRecurveShot();
+        }
+      } else {
+        if (bow.id === 'mathews_lift_33' || bow.id === 'elite_omnia_34') {
+          audio.playQuietCompoundShot();
+        } else {
+          audio.playHoytSnap();
+        }
+      }
+
+      const waist = parseInt(document.getElementById('slider-waist').value);
+      const windage = parseInt(document.getElementById('slider-windage').value);
+      const yardage = parseInt(document.getElementById('slider-yardage').value);
+
+      // Realistic flight time
+      const flightTimeMs = Math.round((60 / bow.velocityFps) * 1000);
+      setTimeout(() => audio.playImpactThump(), Math.min(400, flightTimeMs));
+
+      // Skills Modifiers
+      const anchorRank = State.skills.instinctive_anchor;
+      const whisperRank = State.skills.string_whisper;
+      const boneRank = State.skills.bone_splitter;
+
+      const formTolerance = 4 + (anchorRank * 2); // default ±4° (18°-26°), widens with skill
+      const formGood = (waist >= (22 - formTolerance)) && (waist <= (22 + formTolerance));
+
+      const isMonsterPunch = bow.id.includes('warbow') || bow.id === 'monster_longbow_90' || bow.id === 'obsession_finalcut_35' || boneRank >= 3;
+      const bowIsFast = bow.velocityFps >= 300;
+      
+      // String jump acoustic evasion mitigated by whisper skill
+      const jumpMitigated = whisperRank >= 3;
+      const animalDropped = !enc.isFeeding && !jumpMitigated;
+
+      let hitSuccess = false;
+      let failureReason = '';
+      let placement = '';
+      let trackYds = 0;
+
+      if (!formGood && waist < (22 - formTolerance)) {
+        failureReason = `Arrow Cleared the Spine! By dropping your bow arm instead of bending at the waist from the 20ft stand, the elevation anchor shifted, sending the arrow sailing inches over the animal's back.`;
+      } else if (windage > 5) {
+        if (isMonsterPunch || boneRank >= 2) {
+          hitSuccess = true;
+          placement = "Heavy Broadhead Punched Clean Through Scapula & Spine";
+          trackYds = 12;
+        } else if (bowIsFast) {
+          hitSuccess = true;
+          placement = "High Shoulder Crease & Spine Shock";
+          trackYds = 22;
+        } else {
+          failureReason = `Scapula Deflection! The broadhead struck the dense shoulder bone without sufficient kinetic momentum to breach the chest cavity. (Upgrade Bone-Splitter or War-Bow to smash shoulder blades).`;
+        }
+      } else if (windage <= -2 && windage >= -7 && (yardage === 19 || yardage === 20)) {
+        hitSuccess = true;
+        if (animalDropped) {
+          placement = "Double Lung Center (Animal Coiled into Arrow)";
+          trackYds = Math.round(28 + Math.random() * 15);
+        } else {
+          placement = "Heart & Low Double Lung Exit";
+          trackYds = Math.round(18 + Math.random() * 12);
+        }
+      } else if (yardage < 18) {
+        failureReason = "Low Shaving Hit! Aiming under 18 yards caused the arrow to strike the frozen ground beneath the chest, shaving white brisket hair.";
+      } else {
+        if (bowIsFast || isMonsterPunch) {
+          hitSuccess = true;
+          placement = "One-Lung & Liver Pass-Through";
+          trackYds = Math.round(45 + Math.random() * 20);
+        } else {
+          failureReason = `String Jump Evaded! At ${bow.velocityFps} fps, the skittish animal reacted to the acoustic release twang and ducked beneath the arrow flight line. (Upgrade String Silence skill or craft custom silencers).`;
+        }
+      }
+
+      if (hitSuccess) {
+        // Direct streamlined harvest
+        if (State.activeTags > 0) State.activeTags--;
+        const meatLbs = Math.round(enc.liveWeight * 0.35);
+        State.freezerMeatLbs += meatLbs;
+
+        const record = {
+          id: 'harv_' + Date.now(),
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
+          speciesKey: enc.speciesKey,
+          speciesName: enc.speciesData.commonName,
+          latin: enc.speciesData.latin,
+          name: `${enc.morph.name !== 'Autumn Slate-Grey' && enc.morph.name !== 'High Country Tawny Dun' && enc.morph.name !== 'Highland Russet Red' ? enc.morph.name.split('(')[0] : ''} ${enc.cls.name}`,
+          sex: enc.cls.sex,
+          morph: enc.morph,
+          liveWeight: enc.liveWeight,
+          score: enc.score,
+          scoreOrg: enc.speciesData.scoreOrg,
+          points: enc.cls.points,
+          slantRange: enc.slantRange,
+          horizRange: enc.horizRange,
+          bowUsed: bow.name,
+          waistAngle: waist,
+          shotPlacement: placement,
+          trackDistance: trackYds,
+          meatLbs: meatLbs,
+          antlers: enc.antlers
+        };
+
+        State.harvests.unshift(record);
+        State.activeEncounter = null;
+        saveState();
+
+        audio.playFanfare();
+        openHarvestDossier(record);
+        updateUI();
+      } else {
+        document.getElementById('hunt-narrative-primary').innerHTML = `
+          <span class="text-[#f87171] font-bold">SHOT REPORT:</span> ${failureReason}<br><br>
+          <span class="text-[#8d97a8] italic">The animal bounded into the laurel sanctuary. The timber falls silent again. Calibrate your form or visit the Bowyer's Bench for upgrades.</span>
+        `;
+        State.activeEncounter = null;
+        updateUI();
+      }
+    }
+
+    /* =====================================================================
+       CUSTOM BOW CRAFTING & COMMISSION ENGINE
+       ===================================================================== */
+    let pendingCraftedBow = null;
+
+    function getCraftingSpecs() {
+      const archEl = document.getElementById('craft-sel-arch');
+      const woodEl = document.getElementById('craft-sel-wood');
+      const coreEl = document.getElementById('craft-sel-core');
+      const weightEl = document.getElementById('craft-sel-weight');
+      const stringEl = document.getElementById('craft-sel-string');
+
+      const archOpt = archEl.options[archEl.selectedIndex];
+      const woodOpt = woodEl.options[woodEl.selectedIndex];
+      const coreOpt = coreEl.options[coreEl.selectedIndex];
+      const stringOpt = stringEl.options[stringEl.selectedIndex];
+
+      const archCost = parseInt(archOpt.dataset.cost);
+      const woodCost = parseInt(woodOpt.dataset.cost);
+      const coreCost = parseInt(coreOpt.dataset.cost);
+      const stringCost = parseInt(stringOpt.dataset.cost);
+      const totalCost = archCost + woodCost + coreCost + stringCost;
+
+      const drawWeight = parseInt(weightEl.value);
+      const baseFps = parseInt(archOpt.dataset.base);
+      const coreFps = parseInt(coreOpt.dataset.fps);
+      const bowyerSkill = State.skills.master_bowyer;
+      const speedFps = baseFps + coreFps + (bowyerSkill * 4) + Math.round((drawWeight - 60) * 0.35);
+
+      const arrowGrains = Math.round(drawWeight * 9.2);
+
+      // Value calculation: cost * 2.4 + wood bonus + bowyer skill bonus (+25% per rank)
+      const woodBonus = parseInt(woodOpt.dataset.bonus);
+      const skillMultiplier = 1 + (bowyerSkill * 0.25);
+      const retailValue = Math.round((totalCost * 2.2 + (woodBonus * 8) + (drawWeight * 3)) * skillMultiplier);
+      const profit = retailValue - totalCost;
+
+      const archName = archOpt.text.split('(')[0].trim();
+      const woodName = woodOpt.text.split('(')[0].trim();
+      const coreName = coreOpt.text.split('(')[0].trim();
+      const stringName = stringOpt.text.split('(')[0].trim();
+
+      const fullName = `${drawWeight}# Custom ${woodName.split('&')[0].trim()} ${archName}`;
+
+      return {
+        id: 'cbow_' + Date.now(),
+        type: 'traditional',
+        name: fullName,
+        shortName: `${drawWeight}# ${archName}`,
+        subtitle: `${woodName} • ${coreName} • ${stringName}`,
+        drawWeight: `${drawWeight} lbs @ 28"`,
+        arrowMass: `${arrowGrains} grains`,
+        velocityFps: speedFps,
+        sightStyle: 'Instinctive / Gap',
+        icon: drawWeight >= 75 ? '🐗' : '🏹',
+        desc: `Handcrafted on the bench with ${woodName} and ${coreName}. Tuned with ${stringName} silencers. Throws a ${arrowGrains}gr arrow at ${speedFps} fps.`,
+        totalCost: totalCost,
+        retailValue: retailValue,
+        profit: profit
+      };
+    }
+
+    function updateCraftEstimates() {
+      const specs = getCraftingSpecs();
+      document.getElementById('craft-cost-display').innerText = `$${specs.totalCost}`;
+      document.getElementById('craft-payout-display').innerText = `$${specs.retailValue} (+$${specs.profit})`;
+      document.getElementById('craft-est-profit').innerText = `Est. Value: $${specs.retailValue}`;
+    }
+
+    ['craft-sel-arch', 'craft-sel-wood', 'craft-sel-core', 'craft-sel-weight', 'craft-sel-string'].forEach(id => {
+      document.getElementById(id).addEventListener('change', updateCraftEstimates);
+    });
+
+    document.getElementById('btn-craft-bow').addEventListener('click', () => {
+      const specs = getCraftingSpecs();
+      if (State.funds < specs.totalCost) {
+        alert("Insufficient treasury funds to purchase these bowyer woods and laminations! Sell venison or harvest big game to earn cash.");
+        return;
+      }
+
+      State.funds -= specs.totalCost;
+      audio.init();
+      audio.playWoodCraft();
+
+      pendingCraftedBow = specs;
+      saveState();
+      updateUI();
+
+      // Show Finished Bow Commission Modal
+      document.getElementById('comm-bow-name').innerText = specs.name;
+      document.getElementById('comm-bow-sub').innerText = specs.subtitle;
+      document.getElementById('comm-bow-draw').innerText = specs.drawWeight;
+      document.getElementById('comm-bow-speed').innerText = `${specs.velocityFps} fps`;
+      document.getElementById('comm-bow-mass').innerText = specs.arrowMass;
+      document.getElementById('comm-sell-btn-label').innerText = `💰 Sell for $${specs.retailValue}`;
+      document.getElementById('comm-sell-profit-sub').innerText = `+$${specs.profit} Profit`;
+
+      document.getElementById('modal-bow-commission').classList.remove('hidden');
+    });
+
+    // Modal Keep & Equip
+    document.getElementById('btn-equip-crafted-bow').addEventListener('click', () => {
+      if (!pendingCraftedBow) return;
+      State.customBows.push(pendingCraftedBow);
+      State.equippedBow = pendingCraftedBow.id;
+      saveState();
+      updateUI();
+      renderArsenal();
+      document.getElementById('modal-bow-commission').classList.add('hidden');
+      switchTab('bows');
+    });
+
+    // Modal Sell on Commission
+    document.getElementById('btn-sell-crafted-bow').addEventListener('click', () => {
+      if (!pendingCraftedBow) return;
+      State.funds += pendingCraftedBow.retailValue;
+      audio.playCashChime();
+      saveState();
+      updateUI();
+      document.getElementById('modal-bow-commission').classList.add('hidden');
+    });
+
+    document.getElementById('btn-close-bow-comm').addEventListener('click', () => {
+      document.getElementById('modal-bow-commission').classList.add('hidden');
+    });
+
+    /* =====================================================================
+       SKILL TREE RENDERER & LOGIC
+       ===================================================================== */
+    function renderSkillTree() {
+      const container = document.getElementById('skill-tree-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      Object.values(SKILLS_CATALOG).forEach(sk => {
+        const curRank = State.skills[sk.id] || 0;
+        const isMax = curRank >= sk.maxRank;
+        const cost = Math.round(sk.baseCost * Math.pow(sk.costMult, curRank));
+        const canAfford = State.funds >= cost && !isMax;
+
+        const card = document.createElement('div');
+        card.className = 'p-3 rounded-xl bg-[#17130e] border border-[#332a20] flex items-center justify-between gap-3 font-mono-data';
+
+        card.innerHTML = `
+          <div class="flex-1">
+            <div class="flex items-center gap-1.5 font-bold text-xs text-[#f5f1e8]">
+              <span>${sk.icon}</span>
+              <span>${sk.name}</span>
+              <span class="text-[10px] text-[#c29b53]">Rank ${curRank}/${sk.maxRank}</span>
+            </div>
+            <div class="text-[10px] font-journal italic text-[#a39683] mt-0.5">
+              ${sk.desc}
+            </div>
+          </div>
+          <button class="btn-buy-skill touch-btn px-3 py-1.5 rounded-xl font-bold text-xs ${isMax ? 'bg-[#241e18] text-[#7d705e] border border-[#3a3026]' : canAfford ? 'bg-[#c29b53] hover:bg-[#d4a952] text-[#120f0c]' : 'bg-[#241e18] text-[#a39683] border border-[#3a3026] opacity-60'}" data-skill="${sk.id}" ${!canAfford || isMax ? 'disabled' : ''}>
+            ${isMax ? 'MAX' : `Upgrade $${cost}`}
+          </button>
+        `;
+
+        card.querySelector('.btn-buy-skill')?.addEventListener('click', () => {
+          if (State.funds >= cost && !isMax) {
+            State.funds -= cost;
+            State.skills[sk.id] = curRank + 1;
+            audio.init();
+            audio.playCashChime();
+            saveState();
+            updateUI();
+          }
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    /* VENISON SALES */
+    function sellFreezerVenison() {
+      if (State.freezerMeatLbs <= 0) {
+        alert("No venison currently in the freezer to sell! Harvest big game to restock.");
+        return;
+      }
+      const earnings = State.freezerMeatLbs * 12; // $12/lb
+      State.funds += earnings;
+      const soldLbs = State.freezerMeatLbs;
+      State.freezerMeatLbs = 0;
+      audio.init();
+      audio.playCashChime();
+      saveState();
+      updateUI();
+      alert(`Sold ${soldLbs} lbs of certified organic wild venison for +$${earnings}!`);
+    }
+
+    document.getElementById('btn-sell-freezer').addEventListener('click', sellFreezerVenison);
+    document.getElementById('btn-dossier-sell-meat').addEventListener('click', () => {
+      if (!currentDossierRecord) return;
+      const earnings = currentDossierRecord.meatLbs * 12;
+      State.funds += earnings;
+      audio.init();
+      audio.playCashChime();
+      saveState();
+      updateUI();
+      document.getElementById('btn-dossier-sell-meat').innerText = "Sold!";
+      document.getElementById('btn-dossier-sell-meat').disabled = true;
+    });
+
+    /* =====================================================================
+       HARVEST CLAIM & DOSSIER MODAL
+       ===================================================================== */
+    let currentDossierRecord = null;
+
+    function openHarvestDossier(rec) {
+      currentDossierRecord = rec;
+
+      document.getElementById('dos-date').innerText = rec.date;
+      document.getElementById('dos-title').innerText = rec.name;
+      document.getElementById('dos-subtitle').innerText = `${rec.latin} • ${rec.speciesName}`;
+      document.getElementById('dos-coat-badge').innerText = rec.morph.name;
+      document.getElementById('dos-weight').innerText = `${rec.liveWeight} lbs`;
+      document.getElementById('dos-score').innerText = rec.score > 0 ? `${toEighths(rec.score)} Net` : 'Antlerless';
+      document.getElementById('dos-points-count').innerText = rec.antlers && rec.antlers.hasAntlers ? `${rec.antlers.totalPoints} pts` : '0 pts';
+      document.getElementById('dos-meat-val').innerText = `+$${rec.meatLbs * 12}`;
+      document.getElementById('dos-bow-used').innerText = rec.bowUsed;
+      document.getElementById('dos-form-used').innerText = `${rec.waistAngle}° Locked T-Form`;
+      document.getElementById('dos-placement-used').innerText = rec.shotPlacement;
+      document.getElementById('dos-meat-yield').innerText = `${rec.meatLbs} lbs boneless`;
+
+      document.getElementById('btn-dossier-sell-meat').innerText = `Sell Venison (+$${rec.meatLbs * 12})`;
+      document.getElementById('btn-dossier-sell-meat').disabled = false;
+
+      // Detailed Rack Pill
+      if (rec.antlers && rec.antlers.hasAntlers) {
+        document.getElementById('dos-rack-points-detail').innerText = `${rec.antlers.summaryString}`;
+        document.getElementById('dos-rack-score-detail').innerText = `Gross: ${toEighths(rec.antlers.grossTotalScore)} • Spread: ${toEighths(rec.antlers.insideSpread)} • Deductions: ${toEighths(rec.antlers.totalDeductions)}`;
+        document.getElementById('btn-view-dos-sheet').classList.remove('hidden');
+      } else {
+        document.getElementById('dos-rack-points-detail').innerText = 'Antlerless Doe / Calf / Cow';
+        document.getElementById('dos-rack-score-detail').innerText = 'Prime Herd Health & Venison';
+        document.getElementById('btn-view-dos-sheet').classList.add('hidden');
+      }
+
+      // Badges
+      const badges = document.getElementById('dos-badges');
+      badges.innerHTML = '';
+      if (rec.score >= 140) {
+        badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#2a2215] text-[#f4f4f2] border border-[#c5a059] font-bold">${rec.scoreOrg} QUALIFIER (${toEighths(rec.score)})</div>`;
+      }
+      if (rec.antlers && rec.antlers.isNonTypical) {
+        badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#331c1f] text-[#f87171] border border-[#f87171] font-bold">OFFICIAL NON-TYPICAL ENTRY</div>`;
+      }
+      if (rec.morph.rarity < 0.05) {
+        badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#1f2937] text-white border border-[#4b5563] font-bold">${rec.morph.badge}</div>`;
+      }
+      if (rec.sex !== 'Buck' && rec.sex !== 'Bull' && rec.sex !== 'Stag') {
+        badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#19241e] text-[#4ade80] border border-[#2d4235] font-bold">PRIME HERD CONSERVATION HARVEST</div>`;
+      }
+
+      document.getElementById('dos-field-lore').innerText = `
+        Harvested with archery precision at ${rec.slantRange} yards. The hunter drew smoothly, held steady anchor, bent ${rec.waistAngle}° at the waist to preserve treestand geometry, and placed the broadhead through the vitals. Tracked ${rec.trackDistance} yards to certify this noble specimen.
+      `;
+
+      document.getElementById('share-copy-status').classList.add('hidden');
+      document.getElementById('modal-dossier').classList.remove('hidden');
+    }
+
+    document.getElementById('btn-close-dossier').addEventListener('click', () => {
+      document.getElementById('modal-dossier').classList.add('hidden');
+    });
+    document.getElementById('btn-certify-record').addEventListener('click', () => {
+      document.getElementById('modal-dossier').classList.add('hidden');
+      switchTab('lodge');
+    });
+
+    /* =====================================================================
+       UI UPDATE & TAB SWITCHING
+       ===================================================================== */
+    const tabPanels = {
+      hunt: document.getElementById('tab-hunt'),
+      bows: document.getElementById('tab-bows'),
+      bowyer: document.getElementById('tab-bowyer'),
+      lodge: document.getElementById('tab-lodge'),
+      manual: document.getElementById('tab-manual')
+    };
+
+    function switchTab(target) {
+      document.querySelectorAll('.nav-tab').forEach(t => {
+        t.classList.remove('active', 'text-[#d4af37]');
+        t.classList.add('text-[#a39683]');
+        if (t.dataset.target === target) {
+          t.classList.add('active', 'text-[#d4af37]');
+          t.classList.remove('text-[#a39683]');
+        }
+      });
+      Object.keys(tabPanels).forEach(k => {
+        if (k === target) tabPanels[k].classList.remove('hidden');
+        else tabPanels[k].classList.add('hidden');
+      });
+      if (target === 'lodge') renderLodge();
+      if (target === 'bowyer') {
+        renderSkillTree();
+        updateCraftEstimates();
+      }
+    }
+
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      t.addEventListener('click', () => switchTab(t.dataset.target));
+    });
+
+    function updateUI() {
+      const bow = getEquippedBow();
+
+      // Headers & Telemetry
+      document.getElementById('header-funds-display').innerText = `$${State.funds.toLocaleString()}`;
+      document.getElementById('bowyer-treasury-label').innerText = `$${State.funds.toLocaleString()}`;
+      document.getElementById('header-tags-display').innerText = `${State.activeTags} Active`;
+      document.getElementById('ticker-freezer-lbs').innerText = State.freezerMeatLbs;
+      document.getElementById('ticker-equipped-bow').innerText = bow.shortName;
+      document.getElementById('hunt-equipped-platform-label').innerText = bow.name;
+      document.getElementById('hunt-equipped-sight-label').innerText = bow.sightStyle;
+      document.getElementById('btn-release-text').innerText = bow.type === 'traditional' ? `RELEASE ${bow.shortName.toUpperCase()}` : `SQUEEZE ${bow.shortName.toUpperCase()}`;
+
+      // Render Sub-views
+      renderArsenal();
+      renderSkillTree();
+
+      // Encounter Display
+      const encounterCard = document.getElementById('encounter-card');
+      const actionAimDock = document.getElementById('action-aim-dock');
+      const actionIdleDock = document.getElementById('action-idle-dock');
+
+      if (State.activeEncounter) {
+        encounterCard.classList.remove('hidden');
+        actionAimDock.classList.remove('hidden');
+        actionIdleDock.classList.add('hidden');
+
+        const e = State.activeEncounter;
+        document.getElementById('encounter-name').innerText = e.cls.name;
+        document.getElementById('encounter-score-est').innerText = e.score > 0 ? `Est. ${toEighths(e.score)} Net` : `${e.liveWeight} lbs Live`;
+        document.getElementById('encounter-fur-tag').innerText = e.morph.name;
+        document.getElementById('encounter-behavior').innerText = e.cls.desc;
+        document.getElementById('enc-slant-range').innerText = `${e.slantRange} yds`;
+        document.getElementById('enc-horiz-range').innerText = `${e.horizRange} yds`;
+        document.getElementById('enc-alert-level').innerText = e.alertState;
+
+        // Antler Summary Details
+        const antlerBox = document.getElementById('enc-antler-summary-box');
+        if (e.antlers && e.antlers.hasAntlers) {
+          antlerBox.classList.remove('hidden');
+          document.getElementById('enc-antler-point-str').innerText = e.antlers.summaryString;
+          document.getElementById('enc-antler-stats-line').innerText = `Inside Spread: ${toEighths(e.antlers.insideSpread)} • Gross: ${toEighths(e.antlers.grossTotalScore)} • Net: ${toEighths(e.antlers.finalNetScore)}`;
+        } else {
+          antlerBox.classList.add('hidden');
+        }
+
+        evaluateShotSliders();
+      } else {
+        encounterCard.classList.add('hidden');
+        actionAimDock.classList.add('hidden');
+        actionIdleDock.classList.remove('hidden');
+      }
+    }
+
+    /* RENDER ARSENAL (INCLUDING CRAFTED BOWS) */
+    function renderArsenal() {
+      const tradContainer = document.getElementById('bow-list-traditional');
+      const compContainer = document.getElementById('bow-list-compound');
+      if (!tradContainer || !compContainer) return;
+
+      tradContainer.innerHTML = '';
+      compContainer.innerHTML = '';
+
+      // Combine standard catalog + player crafted bows
+      const allBows = [...Object.values(BOW_DATABASE), ...State.customBows];
+
+      allBows.forEach(bow => {
+        const isEquipped = State.equippedBow === bow.id;
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-2xl border transition ${isEquipped ? 'bg-[#2a2015] border-[#c29b53] shadow-md' : 'bg-[#1b1611] border-[#3a3026] hover:border-[#483d31]'} space-y-2.5`;
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">${bow.icon}</span>
+              <div>
+                <div class="font-serif-title font-bold text-sm text-[#f5f1e8]">${bow.name}</div>
+                <div class="text-[10px] text-[#c2aa82]">${bow.subtitle}</div>
+              </div>
+            </div>
+            <button class="btn-equip-bow touch-btn px-3 py-1.5 ${isEquipped ? 'bg-[#c29b53] text-[#120f0c]' : 'bg-[#272019] border border-[#483d31] text-[#a39683] hover:text-[#f5f1e8]'} rounded-xl text-xs font-bold" data-bow="${bow.id}">
+              ${isEquipped ? 'EQUIPPED' : 'EQUIP'}
+            </button>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-[11px]">
+            <div class="bg-[#17130e] p-2 rounded-lg border border-[#382e24]">
+              <div class="text-[9px] text-[#a39683]">Draw Weight</div>
+              <div class="font-bold text-[#f5f1e8] mt-0.5">${bow.drawWeight}</div>
+            </div>
+            <div class="bg-[#17130e] p-2 rounded-lg border border-[#382e24]">
+              <div class="text-[9px] text-[#a39683]">Arrow Mass</div>
+              <div class="font-bold text-[#d4a952] mt-0.5">${bow.arrowMass}</div>
+            </div>
+            <div class="bg-[#17130e] p-2 rounded-lg border border-[#382e24]">
+              <div class="text-[9px] text-[#a39683]">Velocity</div>
+              <div class="font-bold text-[#f5f1e8] mt-0.5">${bow.velocityFps} fps</div>
+            </div>
+            <div class="bg-[#17130e] p-2 rounded-lg border border-[#382e24]">
+              <div class="text-[9px] text-[#a39683]">Aiming Setup</div>
+              <div class="font-bold text-[#7d9c66] mt-0.5">${bow.sightStyle}</div>
+            </div>
+          </div>
+          <p class="text-xs font-journal italic text-[#ded8cb] leading-relaxed pt-1 border-t border-[#3b2e21]">
+            ${bow.desc}
+          </p>
+        `;
+
+        card.querySelector('.btn-equip-bow').addEventListener('click', () => {
+          State.equippedBow = bow.id;
+          saveState();
+          updateUI();
+        });
+
+        if (bow.type === 'traditional') {
+          tradContainer.appendChild(card);
+        } else {
+          compContainer.appendChild(card);
+        }
+      });
+    }
+
+    /* =====================================================================
+       SLIDER BALLISTICS & HUD EVALUATION
+       ===================================================================== */
+    function evaluateShotSliders() {
+      const waistEl = document.getElementById('slider-waist');
+      const windageEl = document.getElementById('slider-windage');
+      const yardageEl = document.getElementById('slider-yardage');
+      if (!waistEl || !windageEl || !yardageEl) return;
+
+      const waist = parseInt(waistEl.value);
+      const windage = parseInt(windageEl.value);
+      const yardage = parseInt(yardageEl.value);
+
+      State.sliderWaist = waist;
+      State.sliderWindage = windage;
+      State.sliderYardage = yardage;
+
+      const anchorRank = State.skills.instinctive_anchor;
+      const formTolerance = 4 + (anchorRank * 2);
+      const formGood = (waist >= (22 - formTolerance)) && (waist <= (22 + formTolerance));
+
+      const waistLbl = document.getElementById('val-slider-waist');
+      if (waistLbl) {
+        waistLbl.innerText = `${waist}° (${formGood ? 'Locked T-Form' : waist < 22 ? 'Arm Dropped - High' : 'Over-Bent'})`;
+        waistLbl.className = formGood ? 'text-[#7d9c66] font-bold' : 'text-[#e66565] font-bold';
+      }
+
+      const windageLbl = document.getElementById('val-slider-windage');
+      if (windageLbl) {
+        let txt = `${windage > 0 ? '+' : ''}${windage} in `;
+        if (windage <= -2 && windage >= -6) txt += '(Aim Low 1/3 Crease)';
+        else if (windage > 3) txt += '(High Shoulder / Spine)';
+        else if (windage < -6) txt += '(Shaving Low Brisket)';
+        else txt += '(Dead Center Vitals)';
+        windageLbl.innerText = txt;
+      }
+
+      const yardageLbl = document.getElementById('val-slider-yardage');
+      if (yardageLbl) {
+        yardageLbl.innerText = `${yardage} yds (${yardage === 19 ? 'True Gravitational' : yardage === 20 ? 'Slant Range' : yardage < 19 ? 'Under-Hold' : 'Over-Hold'})`;
+      }
+
+      const formStatus = document.getElementById('hud-form-status');
+      if (formStatus) formStatus.innerText = `Waist ${waist}° (${formGood ? 'True T-Lock' : 'Anchor Shift'})`;
+
+      const dropStatus = document.getElementById('hud-drop-status');
+      if (dropStatus) dropStatus.innerText = yardage === 19 ? 'Flat Grav Path' : yardage > 19 ? '+2.2 in High' : '-2.6 in Low';
+
+      const stringStatus = document.getElementById('hud-string-status');
+      if (stringStatus) {
+        const whisperRank = State.skills.string_whisper;
+        stringStatus.innerText = whisperRank >= 3 ? 'Silenced (No Drop)' : (windage <= -2 && windage >= -6 ? 'Compensated' : 'Uncompensated');
+      }
+
+      const hitPred = document.getElementById('hud-hit-prediction');
+      if (hitPred) {
+        if (!formGood && waist < (22 - formTolerance)) {
+          hitPred.innerText = 'HIGH MISS: OVER THE SPINE';
+          hitPred.className = 'text-[#e66565] font-bold';
+        } else if (windage > 4) {
+          hitPred.innerText = 'HIGH SHOULDER / SCAPULA IMPACT';
+          hitPred.className = 'text-[#d4a952] font-bold';
+        } else if (windage <= -2 && windage >= -7 && (yardage === 19 || yardage === 20)) {
+          hitPred.innerText = 'VITAL TRIANGLE: DOUBLE LUNG & HEART';
+          hitPred.className = 'text-[#7d9c66] font-bold';
+        } else if (yardage < 18) {
+          hitPred.innerText = 'LOW SHAVE: BRISKET DIRT';
+          hitPred.className = 'text-[#e66565] font-bold';
+        } else {
+          hitPred.innerText = 'MARGINAL CHEST HIT / STRING RISK';
+          hitPred.className = 'text-[#c29b53] font-bold';
+        }
+      }
+    }
+
+    ['slider-waist', 'slider-windage', 'slider-yardage'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', evaluateShotSliders);
+    });
+
+    /* =====================================================================
+       STAND OBSERVATION & VIGIL ENGINE
+       ===================================================================== */
+    function triggerVigilObservation() {
+      audio.init();
+      const times = [
+        '06:18 AM • First Light Frosted Rut',
+        '06:45 AM • Acorn Ridge Dropping Cold',
+        '07:12 AM • Sunrise Piercing Autumn Timber',
+        '07:42 AM • Warm Ridge Thermals Rising',
+        '08:15 AM • Golden Morning Scrape Check'
+      ];
+      const randTime = times[Math.floor(Math.random() * times.length)];
+      document.getElementById('header-time').innerText = randTime;
+      document.getElementById('hunt-clock-label').innerText = randTime.toUpperCase();
+
+      // 85% chance to encounter game, 15% quiet forest prose
+      if (Math.random() < 0.85 || godOverride) {
+        State.activeEncounter = generateEncounter();
+        document.getElementById('hunt-narrative-primary').innerHTML = `
+          A brittle hemlock branch snaps crisply down-ridge. Glancing through the yellowing oak foliage, a heavy animal steps deliberate and cautious into your 20-yard shooting lane, checking the scrape line for fresh scent.
+        `;
+      } else {
+        State.activeEncounter = null;
+        const quietProse = [
+          "A fox squirrel scurries along an adjacent oak limb, dropping acorn shards into the dry leaves below. The timber remains peaceful and serene.",
+          "A pair of pileated woodpeckers hammer rhythmically against a hollow beech tree. You maintain silent vigilance against the tree bark.",
+          "Morning thermals begin to swirl gently up the ridge. Your position 20 feet up keeps your scent path safely riding above the laurel thicket.",
+          "A crisp breeze stirs the remaining bronze canopy. Frost melts into gentle water droplets pattering softly across the forest floor."
+        ];
+        document.getElementById('hunt-narrative-primary').innerText = quietProse[Math.floor(Math.random() * quietProse.length)];
+      }
+
+      updateUI();
+    }
+
+    /* =====================================================================
+       OFFICIAL SCORE SHEET MODAL RENDERER
+       ===================================================================== */
+    function openScoreSheet(antlers, animalName, speciesCommonName) {
+      if (!antlers || !antlers.hasAntlers) return;
+
+      document.getElementById('sheet-title').innerText = `${animalName} (${speciesCommonName})`;
+      document.getElementById('sheet-stat-total-points').innerText = `${antlers.totalPoints} pts`;
+      document.getElementById('sheet-stat-rl-points').innerText = `${antlers.rightPoints} R / ${antlers.leftPoints} L`;
+      document.getElementById('sheet-stat-spread').innerText = toEighths(antlers.insideSpread);
+      document.getElementById('sheet-stat-gross').innerText = toEighths(antlers.grossTotalScore);
+      document.getElementById('sheet-stat-net').innerText = toEighths(antlers.finalNetScore);
+      document.getElementById('sheet-stat-category').innerText = antlers.isNonTypical ? 'Non-Typical' : 'Typical';
+
+      // Table comparison
+      const tbody = document.getElementById('sheet-table-body');
+      tbody.innerHTML = '';
+
+      // Main Beam row
+      const beamRow = document.createElement('tr');
+      beamRow.className = 'hover:bg-[#201a14]';
+      beamRow.innerHTML = `
+        <td class="py-1.5 px-3 text-[#f5f1e8] font-bold">Main Beam Length</td>
+        <td class="py-1.5 px-2 text-right text-[#f5f1e8]">${toEighths(antlers.rightBeam)}</td>
+        <td class="py-1.5 px-2 text-right text-[#f5f1e8]">${toEighths(antlers.leftBeam)}</td>
+        <td class="py-1.5 px-3 text-right text-[#e66565]">${toEighths(Math.abs(antlers.rightBeam - antlers.leftBeam))}</td>
+      `;
+      tbody.appendChild(beamRow);
+
+      // G-Tines
+      antlers.tines.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#201a14]';
+        tr.innerHTML = `
+          <td class="py-1.5 px-3 text-[#c2aa82]">${t.name} Point Length</td>
+          <td class="py-1.5 px-2 text-right text-[#f5f1e8]">${toEighths(t.right)}</td>
+          <td class="py-1.5 px-2 text-right text-[#f5f1e8]">${toEighths(t.left)}</td>
+          <td class="py-1.5 px-3 text-right text-[#e66565]">${toEighths(t.diff)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // H-Circumferences
+      antlers.circumferences.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#201a14]';
+        tr.innerHTML = `
+          <td class="py-1.5 px-3 text-[#a39683]">${c.name} Mass Circumference</td>
+          <td class="py-1.5 px-2 text-right text-[#f5f1e8]">${toEighths(c.right)}</td>
+          <td class="py-1.5 px-2 text-right text-[#f5f1e8]">${toEighths(c.left)}</td>
+          <td class="py-1.5 px-3 text-right text-[#e66565]">${toEighths(c.diff)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('sheet-subtotal-right').innerText = toEighths(antlers.rightSubtotal);
+      document.getElementById('sheet-subtotal-left').innerText = toEighths(antlers.leftSubtotal);
+      document.getElementById('sheet-total-deductions').innerText = `-${toEighths(antlers.totalDeductions)}`;
+
+      // Abnormal points
+      const abContainer = document.getElementById('sheet-abnormal-container');
+      const abList = document.getElementById('sheet-abnormal-list');
+      if (antlers.abnormalPoints && antlers.abnormalPoints.length > 0) {
+        abContainer.classList.remove('hidden');
+        document.getElementById('sheet-abnormal-total-label').innerText = `Total: ${toEighths(antlers.totalAbnormal)}`;
+        abList.innerHTML = '';
+        antlers.abnormalPoints.forEach(a => {
+          abList.innerHTML += `
+            <div class="p-1.5 bg-[#1b1611] rounded border border-[#332a20] flex justify-between">
+              <span class="text-[#f5f1e8]">${a.side}: ${a.desc}</span>
+              <b class="text-[#d4a952]">${toEighths(a.length)}</b>
+            </div>
+          `;
+        });
+      } else {
+        abContainer.classList.add('hidden');
+      }
+
+      // Calculation matrix
+      document.getElementById('sheet-calc-spread').innerText = toEighths(antlers.insideSpread);
+      document.getElementById('sheet-calc-right').innerText = toEighths(antlers.rightSubtotal);
+      document.getElementById('sheet-calc-left').innerText = toEighths(antlers.leftSubtotal);
+      document.getElementById('sheet-calc-gross-typical').innerText = toEighths(antlers.grossTypicalFrame);
+      document.getElementById('sheet-calc-abnormal').innerText = `+${toEighths(antlers.totalAbnormal)}`;
+      document.getElementById('sheet-calc-gross-total').innerText = toEighths(antlers.grossTotalScore);
+      document.getElementById('sheet-calc-deductions').innerText = `-${toEighths(antlers.totalDeductions)}`;
+      document.getElementById('sheet-calc-net-typical').innerText = toEighths(antlers.netTypicalScore);
+      document.getElementById('sheet-calc-net-nontypical').innerText = toEighths(antlers.netNonTypicalScore);
+
+      document.getElementById('modal-scoresheet').classList.remove('hidden');
+    }
+
+    document.getElementById('btn-close-scoresheet')?.addEventListener('click', () => {
+      document.getElementById('modal-scoresheet').classList.add('hidden');
+    });
+    document.getElementById('btn-close-scoresheet-foot')?.addEventListener('click', () => {
+      document.getElementById('modal-scoresheet').classList.add('hidden');
+    });
+
+    document.getElementById('btn-view-enc-sheet')?.addEventListener('click', () => {
+      if (State.activeEncounter && State.activeEncounter.antlers) {
+        openScoreSheet(State.activeEncounter.antlers, State.activeEncounter.cls.name, State.activeEncounter.speciesData.commonName);
+      }
+    });
+
+    document.getElementById('btn-view-dos-sheet')?.addEventListener('click', () => {
+      if (currentDossierRecord && currentDossierRecord.antlers) {
+        openScoreSheet(currentDossierRecord.antlers, currentDossierRecord.name, currentDossierRecord.speciesName);
+      }
+    });
+
+    /* =====================================================================
+       LODGE & TROPHY SHARING RENDERER
+       ===================================================================== */
+    let activeLodgeFilter = 'all';
+
+    function renderLodge() {
+      const container = document.getElementById('lodge-list-container');
+      const countEl = document.getElementById('lodge-count-display');
+      if (!container) return;
+
+      const filtered = State.harvests.filter(h => {
+        if (activeLodgeFilter === 'all') return true;
+        if (activeLodgeFilter === 'whitetail') return h.speciesKey === 'whitetail';
+        if (activeLodgeFilter === 'elk') return h.speciesKey === 'elk';
+        if (activeLodgeFilter === 'stag') return h.speciesKey === 'stag';
+        if (activeLodgeFilter === 'rare') return h.morph && h.morph.rarity < 0.1;
+        return true;
+      });
+
+      if (countEl) countEl.innerText = State.harvests.length;
+      container.innerHTML = '';
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-6 text-center text-[#a39683] font-journal italic border border-[#3a3026] rounded-2xl bg-[#17130e]">
+            No recorded harvests matching this filter. Spend quiet hours in the treestand to inscribe your first certified specimen.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(rec => {
+        const card = document.createElement('div');
+        card.className = 'p-3.5 rounded-2xl bg-[#1b1611] border border-[#3a3026] hover:border-[#c29b53] transition space-y-2';
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-[9px] text-[#c29b53] uppercase font-bold tracking-wider">${rec.speciesName} • ${rec.date}</div>
+              <div class="font-serif-title font-bold text-sm text-[#f5f1e8]">${rec.name}</div>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-[#d4a952] text-sm">${rec.score > 0 ? `${toEighths(rec.score)} Net` : `${rec.liveWeight} lbs`}</div>
+              <div class="text-[9px] text-[#7d9c66]">${rec.morph.name}</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-1.5 text-[10px] text-[#a39683] bg-[#17130e] p-2 rounded-xl border border-[#2d251d]">
+            <div>Weapon: <b class="text-[#f5f1e8]">${rec.bowUsed.split(' ')[0]}</b></div>
+            <div>Range: <b class="text-[#c2aa82]">${rec.slantRange} yds</b></div>
+            <div>Venison: <b class="text-[#7d9c66]">${rec.meatLbs} lbs</b></div>
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <span class="text-[10px] text-[#a39683] italic">${rec.antlers && rec.antlers.hasAntlers ? rec.antlers.summaryString : 'Prime Conservation Harvest'}</span>
+            <div class="flex items-center gap-1.5">
+              ${rec.antlers && rec.antlers.hasAntlers ? `
+                <button class="btn-lodge-sheet touch-btn px-2 py-1 bg-[#272019] border border-[#483d31] text-[#d4a952] rounded-lg text-[10px] font-bold">
+                  📋 Sheet
+                </button>
+              ` : ''}
+              <button class="btn-lodge-view touch-btn px-2.5 py-1 bg-[#272019] border border-[#c29b53] text-[#f5f1e8] rounded-lg text-[10px] font-bold">
+                Inspect Dossier
+              </button>
+            </div>
+          </div>
+        `;
+
+        card.querySelector('.btn-lodge-view')?.addEventListener('click', () => openHarvestDossier(rec));
+        card.querySelector('.btn-lodge-sheet')?.addEventListener('click', () => openScoreSheet(rec.antlers, rec.name, rec.speciesName));
+
+        container.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll('.lodge-filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.lodge-filter-btn').forEach(b => {
+          b.className = 'lodge-filter-btn px-2.5 py-1 bg-[#1b1611] text-[#a39683] hover:text-[#f5f1e8] rounded-lg border border-[#3a3026] flex-shrink-0';
+        });
+        e.target.className = 'lodge-filter-btn px-2.5 py-1 bg-[#3a3024] text-[#f5f1e8] rounded-lg border border-[#524434] font-bold flex-shrink-0';
+        activeLodgeFilter = e.target.dataset.filter;
+        renderLodge();
+      });
+    });
+
+    /* =====================================================================
+       TROPHY EXPORT & SHARING HELPERS
+       ===================================================================== */
+    function copyTextToClipboard(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    document.getElementById('btn-export-share-code')?.addEventListener('click', () => {
+      if (!currentDossierRecord) return;
+      const json = JSON.stringify(currentDossierRecord);
+      const b64 = btoa(unescape(encodeURIComponent(json)));
+      copyTextToClipboard(b64);
+      const status = document.getElementById('share-copy-status');
+      if (status) {
+        status.innerText = 'Trophy Code Copied to Clipboard!';
+        status.classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('btn-export-text-notes')?.addEventListener('click', () => {
+      if (!currentDossierRecord) return;
+      const r = currentDossierRecord;
+      const notes = `🏹 CERTIFIED BIG GAME HARVEST REPORT
+Specimen: ${r.name} (${r.speciesName} - ${r.latin})
+Date: ${r.date}
+Live Weight: ${r.liveWeight} lbs | Score: ${r.score > 0 ? toEighths(r.score) + ' Net' : 'Antlerless'}
+Points: ${r.antlers && r.antlers.hasAntlers ? r.antlers.summaryString : '0'}
+Coat: ${r.morph.name}
+Range: ${r.slantRange} yds (True Horiz: ${r.horizRange} yds)
+Weapon: ${r.bowUsed}
+Form: ${r.waistAngle}° Torso Lock
+Placement: ${r.shotPlacement}
+Organic Meat Yield: ${r.meatLbs} lbs boneless`;
+
+      copyTextToClipboard(notes);
+      const status = document.getElementById('share-copy-status');
+      if (status) {
+        status.innerText = 'Field Notes Copied to Clipboard!';
+        status.classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('btn-export-image-card')?.addEventListener('click', () => {
+      if (!currentDossierRecord) return;
+      const r = currentDossierRecord;
+      const cvs = document.getElementById('offscreen-cert-canvas');
+      const ctx = cvs.getContext('2d');
+
+      // Draw high-resolution certificate
+      ctx.fillStyle = '#14100c';
+      ctx.fillRect(0, 0, 1200, 700);
+
+      // Gold ornate border
+      ctx.strokeStyle = '#c29b53';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(24, 24, 1152, 652);
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(36, 36, 1128, 628);
+
+      // Header
+      ctx.fillStyle = '#c2aa82';
+      ctx.font = 'bold 20px -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('THE TREESTAND & MOUNTAIN JOURNAL • OFFICIAL FIELD REGISTRY', 600, 90);
+
+      ctx.fillStyle = '#f5f1e8';
+      ctx.font = 'bold 44px Georgia, serif';
+      ctx.fillText(r.name.toUpperCase(), 600, 150);
+
+      ctx.font = 'italic 22px Georgia, serif';
+      ctx.fillStyle = '#a39683';
+      ctx.fillText(`${r.speciesName} (${r.latin}) • Coat: ${r.morph.name}`, 600, 190);
+
+      // Metrics grid
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#221a14';
+      ctx.fillRect(80, 240, 1040, 240);
+      ctx.strokeStyle = '#43372b';
+      ctx.strokeRect(80, 240, 1040, 240);
+
+      ctx.fillStyle = '#d4a952';
+      ctx.font = 'bold 24px -apple-system, sans-serif';
+      ctx.fillText(`OFFICIAL SCORE: ${r.score > 0 ? toEighths(r.score) + ' Net (' + r.scoreOrg + ')' : 'Antlerless Prime'}`, 110, 290);
+
+      ctx.fillStyle = '#f5f1e8';
+      ctx.font = '20px -apple-system, sans-serif';
+      ctx.fillText(`Antler Frame: ${r.antlers && r.antlers.hasAntlers ? r.antlers.summaryString : 'Prime Meat'}`, 110, 335);
+      ctx.fillText(`Live Weight: ${r.liveWeight} lbs | Boneless Venison: ${r.meatLbs} lbs`, 110, 375);
+      ctx.fillText(`Weapon: ${r.bowUsed}`, 110, 415);
+      ctx.fillText(`Archery Geometry: ${r.slantRange} yds Slant @ 20ft Stand (${r.waistAngle}° Locked T-Form)`, 110, 455);
+
+      // Footer
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#7d9c66';
+      ctx.font = 'bold 18px -apple-system, sans-serif';
+      ctx.fillText(`CERTIFIED ON ${r.date.toUpperCase()} • SCENT SECURE DOWNWIND STAND`, 600, 560);
+
+      // Trigger download
+      const a = document.createElement('a');
+      a.download = `Trophy_${r.name.replace(/\s+/g, '_')}.png`;
+      a.href = cvs.toDataURL('image/png');
+      a.click();
+    });
+
+    // Import Trophy Code
+    document.getElementById('btn-import-code-trigger')?.addEventListener('click', () => {
+      document.getElementById('import-code-input').value = '';
+      document.getElementById('import-error-msg').classList.add('hidden');
+      document.getElementById('modal-import').classList.remove('hidden');
+    });
+    document.getElementById('btn-close-import')?.addEventListener('click', () => {
+      document.getElementById('modal-import').classList.add('hidden');
+    });
+    document.getElementById('btn-submit-import-code')?.addEventListener('click', () => {
+      const code = document.getElementById('import-code-input').value.trim();
+      const err = document.getElementById('import-error-msg');
+      try {
+        const json = decodeURIComponent(escape(atob(code)));
+        const rec = JSON.parse(json);
+        if (!rec.speciesName || !rec.name) throw new Error("Invalid format");
+        rec.id = 'imported_' + Date.now();
+        rec.name = `[Imported] ${rec.name}`;
+        State.harvests.unshift(rec);
+        saveState();
+        renderLodge();
+        document.getElementById('modal-import').classList.add('hidden');
+        openHarvestDossier(rec);
+      } catch (e) {
+        err.classList.remove('hidden');
+      }
+    });
+
+    /* =====================================================================
+       GOD MODE & SPAWNER CONSOLE
+       ===================================================================== */
+    let godSelectedSpecies = 'whitetail';
+
+    function populateGodFurSelect() {
+      const sel = document.getElementById('god-select-fur');
+      if (!sel) return;
+      sel.innerHTML = '';
+      const morphs = SPECIES_CONFIG[godSelectedSpecies].furMorphs;
+      morphs.forEach(m => {
+        sel.innerHTML += `<option value="${m.id}">${m.name} (${m.badge})</option>`;
+      });
+    }
+
+    document.querySelectorAll('.btn-god-species').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.btn-god-species').forEach(b => {
+          b.className = 'btn-god-species touch-btn p-1.5 rounded bg-[#272019] border border-[#3a3026] text-[#a39683] text-[10px] font-bold';
+        });
+        e.target.className = 'btn-god-species touch-btn p-1.5 rounded bg-[#332718] border border-[#c29b53] text-[#d4a952] text-[10px] font-bold';
+        godSelectedSpecies = e.target.dataset.species;
+        populateGodFurSelect();
+      });
+    });
+
+    document.getElementById('btn-toggle-god')?.addEventListener('click', () => {
+      populateGodFurSelect();
+      document.getElementById('modal-god').classList.remove('hidden');
+    });
+    document.getElementById('btn-close-god')?.addEventListener('click', () => {
+      document.getElementById('modal-god').classList.add('hidden');
+    });
+
+    document.getElementById('god-btn-spawn')?.addEventListener('click', () => {
+      const furId = document.getElementById('god-select-fur').value;
+      const classKey = document.getElementById('god-select-class').value;
+      const rackPreset = document.getElementById('god-select-rack-type').value;
+
+      godOverride = {
+        species: godSelectedSpecies,
+        furId: furId,
+        classKey: classKey,
+        rackPreset: rackPreset
+      };
+
+      document.getElementById('modal-god').classList.add('hidden');
+      switchTab('hunt');
+      triggerVigilObservation();
+    });
+
+    document.getElementById('god-btn-perfect-aim')?.addEventListener('click', () => {
+      document.getElementById('slider-waist').value = 22;
+      document.getElementById('slider-windage').value = -4;
+      document.getElementById('slider-yardage').value = 19;
+      evaluateShotSliders();
+      document.getElementById('modal-god').classList.add('hidden');
+    });
+
+    document.getElementById('god-btn-instant-harvest')?.addEventListener('click', () => {
+      document.getElementById('slider-waist').value = 22;
+      document.getElementById('slider-windage').value = -4;
+      document.getElementById('slider-yardage').value = 19;
+      document.getElementById('modal-god').classList.add('hidden');
+      executeRelease();
+    });
+
+    document.getElementById('god-btn-replenish-tags')?.addEventListener('click', () => {
+      State.activeTags = 10;
+      State.funds += 2000;
+      saveState();
+      updateUI();
+      document.getElementById('modal-god').classList.add('hidden');
+    });
+
+    document.getElementById('god-btn-seed-trophies')?.addEventListener('click', () => {
+      const master1 = {
+        id: 'seed_1',
+        date: 'Nov 3, 07:15 AM',
+        speciesKey: 'whitetail',
+        speciesName: 'Whitetail Deer',
+        latin: 'Odocoileus virginianus',
+        name: '21-Point Obsidian Sovereign',
+        sex: 'Buck',
+        morph: { id: 'melanistic', name: 'Obsidian Melanistic', rarity: 0.005, badge: '1-IN-500K MELANISTIC' },
+        liveWeight: 254,
+        score: 198.5,
+        scoreOrg: 'Pope & Young',
+        points: 'Antlered',
+        slantRange: 20.0,
+        horizRange: 18.8,
+        bowUsed: '60# Custom Recurve',
+        waistAngle: 22,
+        shotPlacement: 'Heart & Low Double Lung Exit',
+        trackDistance: 18,
+        meatLbs: 88,
+        antlers: generateDetailedAntlers('whitetail', true, 'freak_nontypical')
+      };
+      const master2 = {
+        id: 'seed_2',
+        date: 'Oct 18, 06:40 AM',
+        speciesKey: 'stag',
+        speciesName: 'Highland Red Stag',
+        latin: 'Cervus elaphus scoticus',
+        name: 'The Legendary White Hart',
+        sex: 'Stag',
+        morph: { id: 'white_hart', name: 'Legendary White Hart', rarity: 0.003, badge: 'MYTHICAL WHITE HART' },
+        liveWeight: 495,
+        score: 218.25,
+        scoreOrg: 'CIC European',
+        points: 'Antlered',
+        slantRange: 19.8,
+        horizRange: 18.6,
+        bowUsed: '90# Goliath Longbow',
+        waistAngle: 22,
+        shotPlacement: 'Scapula Pass-Through & Double Lung',
+        trackDistance: 24,
+        meatLbs: 173,
+        antlers: generateDetailedAntlers('stag', true, 'random')
+      };
+      State.harvests.unshift(master1, master2);
+      saveState();
+      renderLodge();
+      document.getElementById('modal-god').classList.add('hidden');
+      switchTab('lodge');
+    });
+
+    /* STAND LISTENERS */
+    document.getElementById('btn-wait-vigil').addEventListener('click', triggerVigilObservation);
+    document.getElementById('btn-glass-stand').addEventListener('click', triggerVigilObservation);
+
+    document.getElementById('btn-pass-animal').addEventListener('click', () => {
+      document.getElementById('hunt-narrative-primary').innerText = `
+        You slowly ease down your draw and watch with reverence as the ${State.activeEncounter.cls.name} feeds peacefully through the shooting corridor and vanishes into the thick timber.
+      `;
+      State.activeEncounter = null;
+      updateUI();
+    });
+
+    document.getElementById('btn-release-string').addEventListener('click', executeRelease);
+
+    /* Initial Boot */
+    loadState();
+    updateUI();
+  </script>
+</body>
+</html>
