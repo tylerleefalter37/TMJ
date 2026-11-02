@@ -438,6 +438,8 @@
                 <option value="reflex_longbow" data-cost="180" data-base="180">Reflex-Deflex Hybrid Longbow (64" AMO • Whisper Quiet)</option>
                 <option value="vintage_50s" data-cost="210" data-base="192">1950s Style Static Recurve (58" AMO • Fast Snap)</option>
                 <option value="heavy_warbow" data-cost="260" data-base="176">Heavy Timber War-Longbow (68" AMO • Scapula Smasher)</option>
+                <option value="mary_rose_longbow" data-cost="340" data-base="186">72" English Heavy Yew War-Bow (Authentic Mary Rose Spec)</option>
+                <option value="asiatic_composite" data-cost="390" data-base="202">Static Horn & Bamboo Asiatic Horsebow (52" Compact Snap)</option>
               </select>
             </div>
 
@@ -448,6 +450,9 @@
                 <option value="osage" data-cost="60" data-bonus="10">Aged Osage Orange & Bocote (Tough & Resonant)</option>
                 <option value="ebony" data-cost="120" data-bonus="25">Macassar Ebony & Curly Bubinga (Dense & Stable)</option>
                 <option value="cocobolo" data-cost="140" data-bonus="35">Cocobolo & Shedua Accent (Heavy & Vibration-Free)</option>
+                <option value="snakewood" data-cost="220" data-bonus="55">Brazilian Snakewood & Gaboon Ebony (Exotic Masterpiece)</option>
+                <option value="ironwood" data-cost="190" data-bonus="45">Sonoran Desert Ironwood & Leopardwood (Ultra-Dense)</option>
+                <option value="bogoak" data-cost="240" data-bonus="60">5,000-Year Ancient Bog Oak & Black Palm (Museum Grade)</option>
                 <option value="phenolic" data-cost="90" data-bonus="18">Micarta Phenolic & Actionwood (Indestructible)</option>
               </select>
             </div>
@@ -458,11 +463,12 @@
               <select id="craft-sel-core" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2.5 text-[#f5f1e8] outline-none text-xs">
                 <option value="bamboo" data-cost="70" data-fps="0">Tri-Lam Moso Bamboo & Clear Glass (Light & Snappy)</option>
                 <option value="carbon_foam" data-cost="150" data-fps="12">Cross-Weave Carbon & Foam Core (+12 fps Flat Flight)</option>
+                <option value="quad_carbon" data-cost="210" data-fps="18">Quad-Axial Carbon & CoreTuff Foam (+18 fps Flat Piercing)</option>
                 <option value="yew_action" data-cost="95" data-fps="4">Pacific Yew & Actionwood (Classic Traditional Cast)</option>
               </select>
             </div>
 
-            <!-- 4. Draw Weight & Tuning -->
+            <!-- 4. Draw Weight & Tuning (EXPANDED TO 120#) -->
             <div class="grid grid-cols-2 gap-2">
               <div>
                 <label class="text-[10px] text-[#a39683] uppercase tracking-wider block mb-1">4. Draw Weight (@ 28")</label>
@@ -473,6 +479,10 @@
                   <option value="65">65# (Deep Bone Penetration)</option>
                   <option value="75">75# (Heavy Big-Game Beast)</option>
                   <option value="85">85# (Monster Heavy War-Rig)</option>
+                  <option value="95">95# (Double Scapula Smasher)</option>
+                  <option value="105">105# (African / Safari War-Bow)</option>
+                  <option value="115">115# (Medieval Fortress War-Draw)</option>
+                  <option value="120">120# (Mary Rose Maximum War-Spec)</option>
                 </select>
               </div>
               <div>
@@ -481,6 +491,29 @@
                   <option value="beaver" data-cost="20">Beaver Fur Balls (Whisper)</option>
                   <option value="catwhiskers" data-cost="15">Rubber Catwhiskers (Rainproof)</option>
                   <option value="otter" data-cost="30">Otter Tail Strips (Silent)</option>
+                  <option value="mink_silencers" data-cost="45">Oiled Wild Mink Fleece (Acoustic Void)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 6. Custom Arrow Shaft & Broadhead Pairings -->
+            <div class="grid grid-cols-2 gap-2 pt-1 border-t border-[#2d251d]">
+              <div>
+                <label class="text-[10px] text-[#c29b53] uppercase tracking-wider block mb-1">6. Arrow Shaft System</label>
+                <select id="craft-sel-arrow" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2 text-[#f5f1e8] outline-none text-xs">
+                  <option value="standard_carbon" data-cost="40" data-mass="0">Micro 5mm Standard Carbon (Balanced)</option>
+                  <option value="footed_fmj" data-cost="75" data-mass="65">Easton Footed Full Metal Jacket (+65gr FOC)</option>
+                  <option value="tapered_cedar" data-cost="60" data-mass="45">23/64" Tapered Port Orford Cedar (+45gr Cast)</option>
+                  <option value="ash_safari" data-cost="95" data-mass="140">11/32" Dense White Ash Safari Shaft (+140gr Punch)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10px] text-[#c29b53] uppercase tracking-wider block mb-1">7. Broadhead Grind</label>
+                <select id="craft-sel-head" class="w-full bg-[#17130e] border border-[#3a3026] rounded-xl p-2 text-[#f5f1e8] outline-none text-xs">
+                  <option value="cut_on_contact" data-cost="30">2-Blade 150gr Cut-on-Contact (High Slicing)</option>
+                  <option value="single_bevel" data-cost="65">Single-Bevel 200gr Tanto Tip (Bone Splitter)</option>
+                  <option value="vpa_solid" data-cost="55">VPA 3-Blade 175gr Machined Tool Steel</option>
+                  <option value="safari_solid_300" data-cost="85">300gr Solid Forged Dangerous Game Sledge</option>
                 </select>
               </div>
             </div>
@@ -1252,6 +1285,19 @@
         icon: '🏹',
         desc: 'A super-smooth, light-handling backcountry takedown. Zero hand shock, lightning quiet on release, making skittish deer far less prone to violent string jumping.'
       },
+      warbow_105: {
+        id: 'warbow_105',
+        type: 'traditional',
+        name: '105# English Pacific Yew Heavy War-Bow',
+        shortName: '105# Yew War-Bow',
+        subtitle: '74" Timber Sapwood/Heartwood Laminate • Horn Nocks • Linen Flemish',
+        drawWeight: '105 lbs @ 28"',
+        arrowMass: '880 grains',
+        velocityFps: 184,
+        sightStyle: 'Instinctive War-Cast',
+        icon: '🐗',
+        desc: 'A colossal weapon of brutal kinetic power. Launches an 880gr heavy ash shaft with 200gr single-bevel forged steel tanto—smashes through both heavy scapula plates and pins the animal to timber behind it.'
+      },
       hoyt_carbon_rx8: {
         id: 'hoyt_carbon_rx8',
         type: 'compound',
@@ -1265,6 +1311,19 @@
         icon: '⚙️',
         desc: 'Warm-to-the-touch hollow carbon riser flying flat at 318 fps. Arrives at 20 yards in only 0.19 seconds before deer can drop into their knees.'
       },
+      hoyt_vtm_80: {
+        id: 'hoyt_vtm_80',
+        type: 'compound',
+        name: '80# Hoyt Carbon VTM / RX-9 Dangerous Game',
+        shortName: '80# Hoyt VTM 80#',
+        subtitle: '80-lb Max Limbs • 34" ATA • Integrated In-Line Picatinny Sight & QAD',
+        drawWeight: '80 lbs (85% Letoff)',
+        arrowMass: '515 grains',
+        velocityFps: 334,
+        sightStyle: 'Micro-Adjust 5-Pin In-Line',
+        icon: '⚡',
+        desc: 'A heavy-poundage long-range powerhouse. Delivers unmatched kinetic punch and blistering speed, arriving downrange before any animal can react to the string.'
+      },
       mathews_lift_33: {
         id: 'mathews_lift_33',
         type: 'compound',
@@ -1277,6 +1336,19 @@
         sightStyle: 'Single-Pin Slider Dial',
         icon: '🎯',
         desc: 'Longer 33" ATA hunting platform provides unmatched string angle and peep alignment. Shot silence is near-supernatural with virtually zero acoustic string report.'
+      },
+      pse_mach34_80: {
+        id: 'pse_mach34_80',
+        type: 'compound',
+        name: '80# PSE Mach 34 Carbon Dead-Level EC2',
+        shortName: '80# PSE Mach 34',
+        subtitle: '34" Extended Carbon Chassis • E2 Cam Engine • 80-lb High Letoff',
+        drawWeight: '80 lbs (80% Dwell)',
+        arrowMass: '535 grains',
+        velocityFps: 340,
+        sightStyle: 'Single-Pin Vernier Dial',
+        icon: '⚙️',
+        desc: 'Dead-level carbon construction engineered for supreme stability. Fires laser-flat trajectories that ignore steep 20ft treestand elevation angles.'
       },
       elite_omnia_34: {
         id: 'elite_omnia_34',
@@ -1366,14 +1438,25 @@
         latin: 'Odocoileus virginianus',
         scoreOrg: 'Pope & Young',
         furMorphs: [
-          { id: 'classic', name: 'Autumn Slate-Grey', rarity: 0.96, badge: 'CLASSIC COAT' },
-          { id: 'piebald', name: 'Piebald Calico', rarity: 0.025, badge: 'RARE PIEBALD' },
-          { id: 'melanistic', name: 'Obsidian Melanistic', rarity: 0.005, badge: '1-IN-500K MELANISTIC' },
-          { id: 'leucistic', name: 'Ghost Leucistic', rarity: 0.008, badge: 'GHOST LEUCISTIC' },
-          { id: 'albino', name: 'Pure White Albino', rarity: 0.002, badge: 'LEGENDARY ALBINO' }
+          { id: 'classic', name: 'Autumn Slate-Grey', rarity: 0.94, badge: 'CLASSIC COAT' },
+          { id: 'piebald', name: 'Piebald Calico', rarity: 0.022, badge: 'RARE PIEBALD' },
+          { id: 'melanistic', name: 'Obsidian Melanistic', rarity: 0.004, badge: '1-IN-500K MELANISTIC' },
+          { id: 'leucistic', name: 'Ghost Leucistic', rarity: 0.007, badge: 'GHOST LEUCISTIC' },
+          { id: 'albino', name: 'Pure White Albino', rarity: 0.002, badge: 'LEGENDARY ALBINO' },
+          { id: 'erythristic', name: 'Erythristic Strawberry Blonde', rarity: 0.012, badge: 'COPPER RED COAT' },
+          { id: 'chimera_brindle', name: 'Chimera Tiger Brindle', rarity: 0.003, badge: '1-IN-1M CHIMERA BRINDLE' },
+          { id: 'dorsal_midnight', name: 'Dorsal Midnight Stripe', rarity: 0.010, badge: 'DORSAL STRIPE MUTATION' }
+        ],
+        oddities: [
+          { id: 'none', name: 'Normal Symmetry', desc: 'Standard anatomical development.' },
+          { id: 'cactus_velvet', name: 'Permanent Velvet Cactus Buck', desc: 'Cryptorchid hormonal anomaly causing continuous velvet growth, bizarre coral nodules, and dozens of knobby stickers.' },
+          { id: 'double_main_beam', name: 'Bifurcated Double Main Beam', desc: 'Two distinct thick main beams sprouting from a single heavy antler pedicle.' },
+          { id: 'palmate_shovel', name: 'Moose-Palmate Shovel Rack', desc: 'Wide solid bone web between main tines reminiscent of an Alaskan moose.' },
+          { id: 'double_drop_tine', name: 'Twin Symmetrical Drop Tines', desc: 'Heavy matching 7-inch daggers hanging below both main beams.' },
+          { id: 'roman_nose_bull', name: 'Roman-Nosed Bull Neck', desc: 'Bulldog-like convex nasal bridge with extreme 34-inch rut muscular neck girth.' }
         ],
         classes: {
-          trophy: { name: 'Mature Antlered Monarch', sex: 'Buck', weightRange: [190, 265], points: 'Antlered', desc: 'Cruising past the stand broadside at 20 yards, checking the scrape line.' },
+          trophy: { name: 'Mature Antlered Monarch', sex: 'Buck', weightRange: [195, 275], points: 'Antlered', desc: 'Cruising past the stand broadside at 20 yards, checking the scrape line.' },
           mature_doe: { name: 'Mature Prime Doe', sex: 'Doe', weightRange: [130, 175], points: 'Antlerless', desc: 'Feeding cautiously on white oak acorns directly in the shooting lane.' },
           fawn: { name: 'Late Spring Fawn', sex: 'Fawn', weightRange: [65, 95], points: 'Spotted', desc: 'Browsing tender shoots beside the brush pile.' }
         }
@@ -1383,13 +1466,22 @@
         latin: 'Cervus canadensis nelsoni',
         scoreOrg: 'Boone & Crockett',
         furMorphs: [
-          { id: 'classic', name: 'High Country Tawny Dun', rarity: 0.96, badge: 'CLASSIC DUST' },
-          { id: 'silver', name: 'Silver Frost Mantle', rarity: 0.025, badge: 'RARE SILVER MANTLE' },
+          { id: 'classic', name: 'High Country Tawny Dun', rarity: 0.94, badge: 'CLASSIC DUST' },
+          { id: 'silver', name: 'Silver Frost Mantle', rarity: 0.022, badge: 'RARE SILVER MANTLE' },
           { id: 'ochre', name: 'Golden Ochre Dun', rarity: 0.012, badge: 'GOLDEN OCHRE' },
-          { id: 'melanistic', name: 'Coal Melanistic Bull', rarity: 0.003, badge: 'MELANISTIC BULL' }
+          { id: 'melanistic', name: 'Coal Melanistic Bull', rarity: 0.003, badge: 'MELANISTIC BULL' },
+          { id: 'platinum_ghost', name: 'Platinum Ghost Leucistic', rarity: 0.002, badge: 'PLATINUM GHOST' },
+          { id: 'piebald_elk', name: 'Pied Mountain Calico', rarity: 0.015, badge: 'CALICO PIEBALD' },
+          { id: 'copper_bull', name: 'Copper Chestnut Bull', rarity: 0.006, badge: 'COPPER CHESTNUT' }
+        ],
+        oddities: [
+          { id: 'none', name: 'Normal Symmetry', desc: 'Standard majestic wapiti antler crown.' },
+          { id: 'whale_tail_double', name: 'Split Whale-Tail Royal Beams', desc: 'Deeply bifurcated flat whale-tail palms at both main beam tips.' },
+          { id: 'devil_brow_tines', name: 'Downward Devil Brow Tines', desc: 'G-1 brows that curl fiercely downward guarding the eye line.' },
+          { id: 'heavy_palmate_crown', name: 'Imperial Palmated 8x8 Crown', desc: 'Broad flat shovel palms holding multi-point antler points.' }
         ],
         classes: {
-          trophy: { name: 'Royal 6x6 Bull Elk', sex: 'Bull', weightRange: [720, 890], points: 'Antlered', desc: 'Stately bull raking an aspen trunk 20 yards out with deep guttural chuckles.' },
+          trophy: { name: 'Royal 6x6 Bull Elk', sex: 'Bull', weightRange: [740, 930], points: 'Antlered', desc: 'Stately bull raking an aspen trunk 20 yards out with deep guttural chuckles.' },
           mature_doe: { name: 'Mature Lead Cow', sex: 'Cow', weightRange: [480, 580], points: 'Antlerless', desc: 'Leading the herd down the timber corridor with high vigilance.' },
           fawn: { name: 'Spotted Spring Calf', sex: 'Calf', weightRange: [160, 230], points: 'Calf', desc: 'Trailing quietly behind the cows through the ferns.' }
         }
@@ -1399,13 +1491,20 @@
         latin: 'Cervus elaphus scoticus',
         scoreOrg: 'CIC European',
         furMorphs: [
-          { id: 'classic', name: 'Highland Russet Red', rarity: 0.96, badge: 'HIGHLAND RUSSET' },
-          { id: 'piebald', name: 'Heather Piebald', rarity: 0.025, badge: 'PIEBALD STAG' },
+          { id: 'classic', name: 'Highland Russet Red', rarity: 0.94, badge: 'HIGHLAND RUSSET' },
+          { id: 'piebald', name: 'Heather Piebald', rarity: 0.022, badge: 'PIEBALD STAG' },
           { id: 'white_hart', name: 'Legendary White Hart', rarity: 0.003, badge: 'MYTHICAL WHITE HART' },
-          { id: 'obsidian', name: 'Midnight Obsidian Stag', rarity: 0.012, badge: 'OBSIDIAN STAG' }
+          { id: 'obsidian', name: 'Midnight Obsidian Stag', rarity: 0.010, badge: 'OBSIDIAN STAG' },
+          { id: 'silver_tipped', name: 'Silver-Tipped Frost Stag', rarity: 0.015, badge: 'SILVER-TIPPED FROST' },
+          { id: 'golden_fallow_cross', name: 'Golden Ochre Heather Morph', rarity: 0.010, badge: 'GOLDEN HEATHER' }
+        ],
+        oddities: [
+          { id: 'none', name: 'Normal Royal Crown', desc: 'Classic cup and crown point configuration.' },
+          { id: 'sovereign_cup_crown', name: 'Double Cup 24-Point Crown', desc: 'Two complete clusters of 6-point cups forming sovereign coronets.' },
+          { id: 'palmate_heather_rack', name: 'Highland Palmate Heather Blades', desc: 'Broad flattened tops holding an ancient crown.' }
         ],
         classes: {
-          trophy: { name: 'Imperial Crown Red Stag', sex: 'Stag', weightRange: [380, 520], points: 'Antlered', desc: 'Roaring into the mist with heavy multipronged crown antlers.' },
+          trophy: { name: 'Imperial Crown Red Stag', sex: 'Stag', weightRange: [390, 540], points: 'Antlered', desc: 'Roaring into the mist with heavy multipronged crown antlers.' },
           mature_doe: { name: 'Mature Highland Hind', sex: 'Hind', weightRange: [220, 310], points: 'Antlerless', desc: 'Stepping softly through the wet bracken.' },
           fawn: { name: 'Highland Calf', sex: 'Calf', weightRange: [90, 140], points: 'Calf', desc: 'Sheltered in the heather beside the burns.' }
         }
@@ -1487,6 +1586,25 @@
           abnormalPoints.push({ side: 'Left', desc: 'Split Brow Tine (G-1)', length: 4.5 });
           abnormalPoints.push({ side: 'Right', desc: 'Base Kicker', length: 3.75 });
           abnormalPoints.push({ side: 'Left', desc: 'G-3 Flyer', length: 5.25 });
+          if (rackPreset === 'cactus_rack') {
+            abnormalPoints.push({ side: 'Right', desc: 'Velvet Coral Cluster 1', length: 6.25 });
+            abnormalPoints.push({ side: 'Left', desc: 'Velvet Coral Cluster 2', length: 5.5 });
+            abnormalPoints.push({ side: 'Right', desc: 'Underside Spike', length: 4.125 });
+            abnormalPoints.push({ side: 'Left', desc: 'Brow Fork Sticker', length: 3.875 });
+          }
+        } else if (rackPreset === 'double_main_beam') {
+          insideSpread = 21.0;
+          rightBeam = 26.25;
+          leftBeam = 25.5;
+          [5.5, 11.0, 10.0, 7.5].forEach((len, idx) => {
+            tines.push({ name: `G-${idx + 1}`, right: len, left: len - 0.5, diff: 0.5 });
+          });
+          [6.0, 5.5, 5.0, 4.5].forEach((h, idx) => {
+            circumferences.push({ name: `H-${idx + 1}`, right: h, left: h, diff: 0 });
+          });
+          abnormalPoints.push({ side: 'Right', desc: 'Secondary Full Main Beam', length: 21.5 });
+          abnormalPoints.push({ side: 'Right', desc: 'Secondary Beam Tine 1', length: 6.25 });
+          abnormalPoints.push({ side: 'Right', desc: 'Secondary Beam Tine 2', length: 5.0 });
         } else {
           // Natural Biometric Variation
           insideSpread = 16.5 + Math.random() * 5.5;
@@ -1506,6 +1624,9 @@
           if (Math.random() < 0.28) {
             abnormalPoints.push({ side: Math.random() > 0.5 ? 'Right' : 'Left', desc: 'Drop Tine', length: 4.5 + Math.random() * 4.0 });
           }
+          if (Math.random() < 0.15) {
+            abnormalPoints.push({ side: 'Right', desc: 'Brow Sticker', length: 2.5 + Math.random() * 3.0 });
+          }
         }
       } else if (spKey === 'elk') {
         insideSpread = 38.0 + Math.random() * 10.0;
@@ -1520,8 +1641,9 @@
           const h = 7.5 + Math.random() * 1.5;
           circumferences.push({ name: `H-${i}`, right: h, left: h, diff: 0 });
         }
-        if (Math.random() < 0.25) {
+        if (Math.random() < 0.25 || rackPreset === 'freak_nontypical') {
           abnormalPoints.push({ side: 'Right', desc: 'Whale Tail Extra Point', length: 6.5 + Math.random() * 4.0 });
+          abnormalPoints.push({ side: 'Left', desc: 'Crown Splitter', length: 5.5 + Math.random() * 3.0 });
         }
       } else {
         // Red Stag
@@ -1537,8 +1659,11 @@
           const h = 5.5 + Math.random() * 1.2;
           circumferences.push({ name: `H-${i}`, right: h, left: h, diff: 0 });
         }
-        abnormalPoints.push({ side: 'Right', desc: 'Crown Point', length: 4.0 + Math.random() * 3.0 });
-        abnormalPoints.push({ side: 'Left', desc: 'Crown Point', length: 4.0 + Math.random() * 3.0 });
+        abnormalPoints.push({ side: 'Right', desc: 'Crown Point 1', length: 4.0 + Math.random() * 3.0 });
+        abnormalPoints.push({ side: 'Left', desc: 'Crown Point 2', length: 4.0 + Math.random() * 3.0 });
+        if (Math.random() < 0.3 || rackPreset === 'freak_nontypical') {
+          abnormalPoints.push({ side: 'Right', desc: 'Highland Imperial Cup Spike', length: 5.25 + Math.random() * 2.5 });
+        }
       }
 
       // Compute subtotals
@@ -1566,7 +1691,7 @@
       const netTypicalScore = grossTypicalFrame - totalDeductions;
       const netNonTypicalScore = grossTotalScore - totalDeductions;
 
-      const isNonTypical = totalAbnormal >= 8.0;
+      const isNonTypical = totalAbnormal >= 8.0 || rackPreset === 'freak_nontypical' || rackPreset === 'cactus_rack' || rackPreset === 'double_main_beam';
       const finalNetScore = isNonTypical ? netNonTypicalScore : netTypicalScore;
 
       let rightPoints = 1 + tines.filter(t => t.right > 0).length + abnormalPoints.filter(a => a.side === 'Right').length;
@@ -1676,6 +1801,14 @@
         }
       }
 
+      // Pick Genetic Oddity
+      let oddity = sp.oddities && sp.oddities.length > 0 ? sp.oddities[0] : { id: 'none', name: 'Normal', desc: '' };
+      if (godOverride && godOverride.oddityId) {
+        oddity = sp.oddities.find(o => o.id === godOverride.oddityId) || oddity;
+      } else if (sp.oddities && Math.random() < (0.12 * scoutBonus)) {
+        oddity = sp.oddities[Math.floor(Math.random() * (sp.oddities.length - 1)) + 1];
+      }
+
       // Pick Class (Trophy, Doe, Fawn)
       let cKey = 'trophy';
       if (godOverride && godOverride.classKey) {
@@ -1699,7 +1832,10 @@
 
       // Detailed Antler Scoring Generation
       const isTrophy = cKey === 'trophy';
-      const rackPreset = godOverride && godOverride.rackPreset ? godOverride.rackPreset : 'random';
+      let rackPreset = godOverride && godOverride.rackPreset ? godOverride.rackPreset : 'random';
+      if (oddity.id === 'cactus_velvet') rackPreset = 'cactus_rack';
+      if (oddity.id === 'double_main_beam') rackPreset = 'double_main_beam';
+
       const antlerData = generateDetailedAntlers(spKey, isTrophy, rackPreset);
 
       const isFeeding = Math.random() > 0.4;
@@ -1712,6 +1848,7 @@
         speciesData: sp,
         cls: cls,
         morph: morph,
+        oddity: oddity,
         slantRange: slantRange,
         horizRange: horizRange,
         liveWeight: wt,
@@ -1733,7 +1870,7 @@
       audio.init();
 
       if (bow.type === 'traditional') {
-        if (bow.id.includes('warbow') || bow.id === 'monster_longbow_90') {
+        if (bow.id.includes('warbow') || bow.id === 'monster_longbow_90' || bow.id === 'warbow_105') {
           audio.playHeavyLongbowShot();
         } else {
           audio.playRecurveShot();
@@ -1762,7 +1899,7 @@
       const formTolerance = 4 + (anchorRank * 2); // default ±4° (18°-26°), widens with skill
       const formGood = (waist >= (22 - formTolerance)) && (waist <= (22 + formTolerance));
 
-      const isMonsterPunch = bow.id.includes('warbow') || bow.id === 'monster_longbow_90' || bow.id === 'obsession_finalcut_35' || boneRank >= 3;
+      const isMonsterPunch = bow.id.includes('warbow') || bow.id === 'monster_longbow_90' || bow.id === 'warbow_105' || bow.id === 'hoyt_vtm_80' || bow.id === 'pse_mach34_80' || bow.id === 'obsession_finalcut_35' || boneRank >= 3;
       const bowIsFast = bow.velocityFps >= 300;
       
       // String jump acoustic evasion mitigated by whisper skill
@@ -1824,6 +1961,7 @@
           name: `${enc.morph.name !== 'Autumn Slate-Grey' && enc.morph.name !== 'High Country Tawny Dun' && enc.morph.name !== 'Highland Russet Red' ? enc.morph.name.split('(')[0] : ''} ${enc.cls.name}`,
           sex: enc.cls.sex,
           morph: enc.morph,
+          oddity: enc.oddity,
           liveWeight: enc.liveWeight,
           score: enc.score,
           scoreOrg: enc.speciesData.scoreOrg,
@@ -1866,17 +2004,23 @@
       const coreEl = document.getElementById('craft-sel-core');
       const weightEl = document.getElementById('craft-sel-weight');
       const stringEl = document.getElementById('craft-sel-string');
+      const arrowEl = document.getElementById('craft-sel-arrow');
+      const headEl = document.getElementById('craft-sel-head');
 
       const archOpt = archEl.options[archEl.selectedIndex];
       const woodOpt = woodEl.options[woodEl.selectedIndex];
       const coreOpt = coreEl.options[coreEl.selectedIndex];
       const stringOpt = stringEl.options[stringEl.selectedIndex];
+      const arrowOpt = arrowEl ? arrowEl.options[arrowEl.selectedIndex] : { dataset: { cost: 40, mass: 0 }, text: 'Standard Carbon' };
+      const headOpt = headEl ? headEl.options[headEl.selectedIndex] : { dataset: { cost: 30 }, text: 'Cut-on-Contact' };
 
       const archCost = parseInt(archOpt.dataset.cost);
       const woodCost = parseInt(woodOpt.dataset.cost);
       const coreCost = parseInt(coreOpt.dataset.cost);
       const stringCost = parseInt(stringOpt.dataset.cost);
-      const totalCost = archCost + woodCost + coreCost + stringCost;
+      const arrowCost = parseInt(arrowOpt.dataset.cost || 40);
+      const headCost = parseInt(headOpt.dataset.cost || 30);
+      const totalCost = archCost + woodCost + coreCost + stringCost + arrowCost + headCost;
 
       const drawWeight = parseInt(weightEl.value);
       const baseFps = parseInt(archOpt.dataset.base);
@@ -1884,18 +2028,22 @@
       const bowyerSkill = State.skills.master_bowyer;
       const speedFps = baseFps + coreFps + (bowyerSkill * 4) + Math.round((drawWeight - 60) * 0.35);
 
-      const arrowGrains = Math.round(drawWeight * 9.2);
+      const arrowBonusMass = parseInt(arrowOpt.dataset.mass || 0);
+      const arrowGrains = Math.round(drawWeight * 9.2) + arrowBonusMass;
 
-      // Value calculation: cost * 2.4 + wood bonus + bowyer skill bonus (+25% per rank)
+      // Value calculation: cost * 2.3 + wood bonus + bowyer skill bonus (+25% per rank) + weight premium
       const woodBonus = parseInt(woodOpt.dataset.bonus);
+      const weightBonus = Math.max(0, drawWeight - 70) * 8;
       const skillMultiplier = 1 + (bowyerSkill * 0.25);
-      const retailValue = Math.round((totalCost * 2.2 + (woodBonus * 8) + (drawWeight * 3)) * skillMultiplier);
+      const retailValue = Math.round((totalCost * 2.1 + (woodBonus * 9) + (drawWeight * 3.5) + weightBonus) * skillMultiplier);
       const profit = retailValue - totalCost;
 
       const archName = archOpt.text.split('(')[0].trim();
       const woodName = woodOpt.text.split('(')[0].trim();
       const coreName = coreOpt.text.split('(')[0].trim();
       const stringName = stringOpt.text.split('(')[0].trim();
+      const arrowName = arrowOpt.text.split('(')[0].trim();
+      const headName = headOpt.text.split('(')[0].trim();
 
       const fullName = `${drawWeight}# Custom ${woodName.split('&')[0].trim()} ${archName}`;
 
@@ -1904,13 +2052,13 @@
         type: 'traditional',
         name: fullName,
         shortName: `${drawWeight}# ${archName}`,
-        subtitle: `${woodName} • ${coreName} • ${stringName}`,
+        subtitle: `${woodName} • ${coreName} • ${arrowName}`,
         drawWeight: `${drawWeight} lbs @ 28"`,
-        arrowMass: `${arrowGrains} grains`,
+        arrowMass: `${arrowGrains} grains (${headName})`,
         velocityFps: speedFps,
         sightStyle: 'Instinctive / Gap',
-        icon: drawWeight >= 75 ? '🐗' : '🏹',
-        desc: `Handcrafted on the bench with ${woodName} and ${coreName}. Tuned with ${stringName} silencers. Throws a ${arrowGrains}gr arrow at ${speedFps} fps.`,
+        icon: drawWeight >= 90 ? '🐗' : drawWeight >= 70 ? '⚡' : '🏹',
+        desc: `Handcrafted on the bench with ${woodName} and ${coreName}. Tuned with ${stringName} silencers and custom ${arrowName} shafts. Throws a massive ${arrowGrains}gr payload with ${headName} broadhead at ${speedFps} fps.`,
         totalCost: totalCost,
         retailValue: retailValue,
         profit: profit
@@ -1924,8 +2072,8 @@
       document.getElementById('craft-est-profit').innerText = `Est. Value: $${specs.retailValue}`;
     }
 
-    ['craft-sel-arch', 'craft-sel-wood', 'craft-sel-core', 'craft-sel-weight', 'craft-sel-string'].forEach(id => {
-      document.getElementById(id).addEventListener('change', updateCraftEstimates);
+    ['craft-sel-arch', 'craft-sel-wood', 'craft-sel-core', 'craft-sel-weight', 'craft-sel-string', 'craft-sel-arrow', 'craft-sel-head'].forEach(id => {
+      document.getElementById(id)?.addEventListener('change', updateCraftEstimates);
     });
 
     document.getElementById('btn-craft-bow').addEventListener('click', () => {
@@ -2106,12 +2254,15 @@
       if (rec.morph.rarity < 0.05) {
         badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#1f2937] text-white border border-[#4b5563] font-bold">${rec.morph.badge}</div>`;
       }
+      if (rec.oddity && rec.oddity.id !== 'none') {
+        badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#3d2a18] text-[#d4a952] border border-[#c29b53] font-bold">🧬 ${rec.oddity.name.toUpperCase()}</div>`;
+      }
       if (rec.sex !== 'Buck' && rec.sex !== 'Bull' && rec.sex !== 'Stag') {
         badges.innerHTML += `<div class="px-2 py-0.5 rounded bg-[#19241e] text-[#4ade80] border border-[#2d4235] font-bold">PRIME HERD CONSERVATION HARVEST</div>`;
       }
 
       document.getElementById('dos-field-lore').innerText = `
-        Harvested with archery precision at ${rec.slantRange} yards. The hunter drew smoothly, held steady anchor, bent ${rec.waistAngle}° at the waist to preserve treestand geometry, and placed the broadhead through the vitals. Tracked ${rec.trackDistance} yards to certify this noble specimen.
+        Harvested with archery precision at ${rec.slantRange} yards. The hunter drew smoothly, held steady anchor, bent ${rec.waistAngle}° at the waist to preserve treestand geometry, and placed the broadhead through the vitals. Tracked ${rec.trackDistance} yards to certify this noble specimen. ${rec.oddity && rec.oddity.id !== 'none' ? `Field biological notes note unique morphology: ${rec.oddity.desc}` : ''}
       `;
 
       document.getElementById('share-copy-status').classList.add('hidden');
@@ -2744,6 +2895,29 @@ Organic Meat Yield: ${r.meatLbs} lbs boneless`;
       morphs.forEach(m => {
         sel.innerHTML += `<option value="${m.id}">${m.name} (${m.badge})</option>`;
       });
+
+      // Also ensure oddity selection exists
+      let odditySel = document.getElementById('god-select-oddity');
+      if (!odditySel) {
+        const parent = sel.parentElement;
+        const oddityDiv = document.createElement('div');
+        oddityDiv.className = 'mt-2';
+        oddityDiv.innerHTML = `
+          <div class="text-[10px] text-[#c29b53] font-bold uppercase tracking-wider mb-1">2B. GENETIC ODDITY / BIOLOGY</div>
+          <select id="god-select-oddity" class="w-full bg-[#272019] border border-[#3a3026] rounded-lg p-2 text-[#f5f1e8] text-[11px] outline-none">
+          </select>
+        `;
+        parent.insertBefore(oddityDiv, sel.nextElementSibling);
+        odditySel = document.getElementById('god-select-oddity');
+      }
+
+      if (odditySel) {
+        odditySel.innerHTML = '';
+        const oddities = SPECIES_CONFIG[godSelectedSpecies].oddities || [];
+        oddities.forEach(o => {
+          odditySel.innerHTML += `<option value="${o.id}">${o.name}</option>`;
+        });
+      }
     }
 
     document.querySelectorAll('.btn-god-species').forEach(btn => {
@@ -2769,10 +2943,13 @@ Organic Meat Yield: ${r.meatLbs} lbs boneless`;
       const furId = document.getElementById('god-select-fur').value;
       const classKey = document.getElementById('god-select-class').value;
       const rackPreset = document.getElementById('god-select-rack-type').value;
+      const oddityEl = document.getElementById('god-select-oddity');
+      const oddityId = oddityEl ? oddityEl.value : 'none';
 
       godOverride = {
         species: godSelectedSpecies,
         furId: furId,
+        oddityId: oddityId,
         classKey: classKey,
         rackPreset: rackPreset
       };
